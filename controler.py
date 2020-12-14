@@ -89,13 +89,3 @@ class TournamentControler:
 		self.tournament_infos['players_list'] = []
 		self.tournament_infos['time_controler'] = input("Controleur de temps :")
 		self.tournament_infos['description'] = input("Description")
-
-		
-
-			
-
-
-
-
-if __name__ == "__main__":
-	m = MainControler()
