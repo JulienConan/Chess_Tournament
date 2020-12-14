@@ -7,24 +7,38 @@ class Screen:
 		pass
 
 	def main_page(self):
-		os.system('clear')
+		os.system('cls' if os.name == 'nt' else 'clear')
 		self.text = ["			GESTIONNAIRE DE TOURNOI					",
 					"\n\n\n",
 					"[1] Gestion des joueurs",
 					"\n",
 					"[2] Lecture Rapports",
 					"\n",
-					"[3] Création d'un tournoi",
-					"\n",
-					"[4] Chargement d'un tournoi",
+					"[3] Gestion des tournois",
 					"\n"]
 
 		self.on_screen()
 
-	def tournament(self):
-		self.text = ["			Nouveau tournoi			"]
+	def tournament_main_page(self):
+		self.clear()
+		self.text = ["			TOURNOI		",
+					 "\n\n\n",
+					 "[1] Créer un tournoi",
+					 "\n",
+					 "[2] Charger un tournoi",
+					 "\n",
+					 "[3] Retourner au menu précédent",
+					 "\n"
+					 ]
+		self.on_screen()
 
-	def main_player_page(self):
+	def tournament_on_course(self):
+		self.clear()
+		self.text = ["			Nouveau Tournoi          ",
+					"\n\n\n"]
+		self.on_screen()
+
+	def player_main_page(self):
 		self.clear()
 		self.text = ["		Gestion des joueurs",
 					 "\n\n\n",
@@ -46,4 +60,4 @@ class Screen:
 		pass
 
 	def clear(self):
-		os.system('clear')
+		os.system('cls' if os.name == 'nt' else 'clear')
