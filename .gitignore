@@ -1,2 +1,2 @@
-ignore\env\
-ignore\Diagramme.xmi
+.env\
+.Diagramme.xmi
