@@ -5,3 +5,4 @@ TOURNAMENT_PLAYERS_NB = 8
 ROUNDS_NB = 4
 ACTORS_NB = 0
 ACTORS_TABLE = 'actors_table'
+TOURNAMENTS_TABLE = 'tournaments_table'

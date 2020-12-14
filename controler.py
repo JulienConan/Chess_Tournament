@@ -5,7 +5,8 @@ from tinydb import TinyDB, Query
 from time import strftime
 from constants import *
 
-db = TinyDB('datas_base/db.json')
+players_file = TinyDB('datas_base/players_file.json')
+tournaments_file = TinyDB('datas_base/tournaments_file.json')
 
 class MainControler:
 	def __init__(self):
@@ -62,7 +63,7 @@ class PlayerControler:
 				print("le classement doit être un chiffre supérieur ou égal à 0")
 				pass
 
-		db.table(ACTORS_TABLE).insert(self.player_dict)
+		players_file.table(ACTORS_TABLE).insert(self.player_dict)
 
 
 class TournamentControler:
@@ -80,12 +81,14 @@ class TournamentControler:
 	def create(self):
 		self.screen.tournament_on_course()
 		self.tournament_infos = {}
-		self.tournament_infos['name'] = input("Nom du Tournoi")
-		self.tournament_infos['location'] = input("Lieu du tournoi")
+		self.tournament_infos['name'] = input("Nom du Tournoi : ")
+		self.tournament_infos['location'] = input("Lieu du tournoi : ")
 		self.tournament_infos['date_start'] = strftime("%A %d %B %Y %H:%M:%S")
 		self.tournament_infos['date_end'] = "on_course"
 		self.tournament_infos['rounds_number'] = ROUNDS_NB
 		self.tournament_infos['rounds_list'] = []
 		self.tournament_infos['players_list'] = []
-		self.tournament_infos['time_controler'] = input("Controleur de temps :")
-		self.tournament_infos['description'] = input("Description")
+		self.tournament_infos['time_controler'] = input("Controleur de temps (blitz, bullet ou coup rapide) : ")
+		self.tournament_infos['description'] = input("Description : ")
+
+		tournaments_file.table(ACTORS_TABLE).insert(self.tournament_infos)
