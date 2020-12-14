@@ -27,16 +27,49 @@ class Screen:
 					 "\n",
 					 "[2] Charger un tournoi",
 					 "\n",
-					 "[3] Retourner au menu précédent",
+					 "[3] Modifier un tournoi",
+					 "\n",
+					 "[h] Retourner au menu principale",
 					 "\n"
 					 ]
 		self.on_screen()
 
-	def tournament_on_course(self):
+	def tournaments_list(self) :
+		self.clear()
+		self.text = ["			Liste des tournois			",
+					"\n\n\n"]
+		self.on_screen()
+
+	def new_tournament(self):
 		self.clear()
 		self.text = ["			Nouveau Tournoi          ",
 					"\n\n\n"]
 		self.on_screen()
+
+	def add_infos(self,infos):
+		self.clear()
+		self.text.append("\n")
+		for info in infos:
+			self.text.append(info)
+		self.on_screen()
+
+	def players_list(self, players_list="\n") :
+		self.clear()
+		self.text = ["				Liste des joueurs		",
+					"\n\n\n"]
+		self.on_screen()
+
+	def tournaments_list(self, players_list="\n") :
+		self.clear()
+		self.text = ["				Liste des tournois		",
+					"\n\n\n"]
+		self.on_screen()
+
+	def play(self):
+		self.clear()
+		self.text
+
+
 
 	def player_main_page(self):
 		self.clear()
@@ -48,7 +81,7 @@ class Screen:
 					 "\n",
 					 "[3] Supprimer un joueur",
 					 "\n",
-					 "[4] Retourner au menu précédent",
+					 "[h] Retourner au menu précédent",
 					 "\n"
 					 ]
 		self.on_screen()
@@ -61,3 +94,24 @@ class Screen:
 
 	def clear(self):
 		os.system('cls' if os.name == 'nt' else 'clear')
+
+	def reports_main(self):
+		self.clear()
+		self.text = ["			Reports 			",
+					 "\n\n\n",
+					 "[1] Liste des joueurs par ordre alphabétique",
+					 "\n",
+					 "[2] Liste des joueurs par classement",
+					 "\n",
+					 "[3] Liste des joueurs d'un tournoi par ordre alphabétique",
+					 "\n",
+					 "[4] Liste des joueurs d'un tournoi par classement",
+					 "\n",
+					 "[5] Liste de tous les tournois",
+					 "\n",
+					 "[6] Liste de tous les tours d'un tournois",
+					 "\n",
+					 "[7] Liste de tous les matchs d'un tournoi",
+					 "\n",
+					 ]
+		self.on_screen()

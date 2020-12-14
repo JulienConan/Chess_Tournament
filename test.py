@@ -4,18 +4,18 @@ from models import*
 from tinydb import TinyDB, Query
 from constants import *
 
-db = TinyDB('datas_base/db.json')
+db = TinyDB('datas_base/players_file.json')
 
 players_list = []
 
-players_list.append(Player("Dupont", "Jules", "02/15/1986", "Masculin", 89785, 1))
-players_list.append(Player("Guilbeau", "Pierre", "25/11/2986", "Masculin", 874, 2))
-players_list.append(Player("Rouinsard", "Mo", "26/12/1985", "Féminin", 897, 3))
-players_list.append(Player("Dunand", "Alban", "11/02/1990" , "Masculin",654, 4))
-players_list.append(Player("Mbapé", "Thierry", "20/59/1698", "Masculin", 213, 5))
-players_list.append(Player("CONAN", "Rose", "06/11/1995", "Feminin", 52, 6))
-players_list.append(Player("Koba", "Lucie", "12/03/1956", "Féminin", 6546, 7))
-players_list.append(Player("Modeus", "Kate", "25/05/1986", "Féminin", 2131, 8))
+players_list.append(Player(1, "Dupont", "Jules", "02/15/1986", "Masculin", 89785))
+players_list.append(Player(2, "Guilbeau", "Pierre", "25/11/2986", "Masculin", 874))
+players_list.append(Player(3, "Rouinsard", "Mo", "26/12/1985", "Féminin", 897))
+players_list.append(Player(4, "Dunand", "Alban", "11/02/1990" , "Masculin",654))
+players_list.append(Player(5, "Mbapé", "Thierry", "20/59/1698", "Masculin", 213))
+players_list.append(Player(6, "CONAN", "Rose", "06/11/1995", "Feminin", 52))
+players_list.append(Player(7, "Koba", "Lucie", "12/03/1956", "Féminin", 6546))
+players_list.append(Player(8, "Modeus", "Kate", "25/05/1986", "Féminin", 2131))
 
 for i in range(7):
 	print("Round" + str(i))
@@ -35,7 +35,7 @@ for i in range(7):
 		print(players_list[i].tournament_score)
 for i in players_list :
 	serialized_players = i.serialized_players()
-	index = db.table(ACTORS_TABLE).insert(serialized_players)
+	index = db.insert(serialized_players)
 	print(index)
 
 P = Query()

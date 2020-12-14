@@ -5,13 +5,13 @@ from operator import attrgetter
 
 class Player:
     """ Create a Player Object"""
-    def __init__(self, surname, name, birthday, sexe, elo_ranking, player_id):
-        self.surname = surname
-        self.name = name
-        self.player_id = player_id
-        self.birthday = birthday
-        self.sexe = sexe
-        self.elo_ranking = elo_ranking
+    def __init__(self, player_infos):
+        self.player_id = player_infos['player_id']
+        self.surname = player_infos['surname']
+        self.name = player_infos['name']
+        self.elo_ranking = player_infos['ranking']
+        self.birthday = player_infos['birthday']
+        self.sexe = player_infos['sexe']
         self.tournament_opponents = []
         self.tournament_score = 0
 
@@ -23,12 +23,12 @@ class Player:
 
     def serialized_players(self):
         player_dict = {}
+        player_dict['player_id'] = self.player_id
         player_dict['surname'] = self.surname
         player_dict['name'] = self.name
+        player_dict['elo_ranking'] = self.elo_ranking
         player_dict['birthday'] = self.birthday
         player_dict['sexe'] = self.sexe
-        player_dict['elo_ranking'] = self.elo_ranking
-        player_dict['player_id'] = self.player_id
         return player_dict
 
 
@@ -109,16 +109,16 @@ class Round:
         self.on_course = False
 
 class Tournament:
-    def __init__(self, name, location, time_controller, description, players_list=[], rounds_number=4):
-        self.name = name
-        self.location = location
-        self.date_start = strftime("%A %d %B %Y")
-        self.date_end = "On course"
-        self.time_controller = time_controller
-        self.description = description
-        self.total_round = rounds_number
-        self.players_list = players_list
-        self.rounds_list = []
+    def __init__(self, dictio):
+        self.name = dictio['name']
+        self.location = dictio['location']
+        self.date_start = dictio['date_start']
+        self.date_end = dictio['date_end']
+        self.time_controller = dictio['time_controler']
+        self.description = dictio['description']
+        self.total_round = dictio['rounds_number']
+        self.players_list = dictio['players_list']
+        self.rounds_list = dictio['rounds_list']
         self.round = 1
 
     def create_round(self):
