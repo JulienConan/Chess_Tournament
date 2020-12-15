@@ -59,16 +59,17 @@ class Screen:
 					"\n\n\n"]
 		self.on_screen()
 
-	def tournaments_list(self, players_list="\n") :
+	def tournament_result(self, infos):
 		self.clear()
-		self.text = ["				Liste des tournois		",
+		self.text = ["          RESULTAT DU TOURNOI         ",
 					"\n\n\n"]
-		self.on_screen()
+		self.add_infos(infos)
 
 	def play(self):
 		self.clear()
-		self.text
-
+		self.text = ["			Tournoi en cours			",
+					  "\n\n\n"]
+		self.on_screen()
 
 
 	def player_main_page(self):
