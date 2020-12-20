@@ -4,13 +4,13 @@
 class Match:
     """ Create a Match Object """
 
-    def __init__(self, match_id, player1, player2, score_player1=0 , score_player2=0):
+    def __init__(self, match_id, player1, player2, score_player1=0 , score_player2=0, statement="En cours"):
         self.match_id = match_id
         self.player1 = player1
         self.player2 = player2
         self.score_player1 = score_player1
         self.score_player2 = score_player2
-        self.statement = "En cours"
+        self.statement = statement
 
 
     def __repr__(self):

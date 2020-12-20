@@ -2,18 +2,17 @@
 """Module contenant la classe Round"""
 
 from time import strftime
-
-from player import Player
-from match import Match
+from operator import attrgetter
+from models.match import Match
 
 class Round:
     def __init__(self, round_id, players_list, date_start=strftime("%A %d %B %Y %H:%M:%S"),
     			 date_end="On course", matchs_validates=0, matchs_list=[] ):
 
         self.round_id = round_id
+        self.players_list = players_list
         self.date_start = date_start
         self.date_end = date_end
-        self.players_list = players_list
         self.matchs_list = matchs_list
         self.matchs_validates = matchs_validates
 
@@ -69,3 +68,16 @@ class Round:
             matchs_list.append(match.serialized())
         serialized_round.append(matchs_list)
         return serialized_round
+
+    def deserialized(self):
+        deserialized_match = []
+        for match in self.matchs_list: 
+            for player in self.players_list:
+                if player.player_id == match[2][0]:
+                    player1 = player
+                if player.player_id == match[3][0]:
+                    player2 = player
+            m = Match(match[0], player1, player2, match[2][1], match[3][1],match[1])
+            deserialized_match.append(m)
+        self.matchs_list = deserialized_match
+

@@ -1,5 +1,8 @@
 # coding: utf-8
 """ Module contenant la classe Tournament"""
+from tinydb import TinyDB, Query
+from models.player import Player
+from models.round import Round
 
 class Tournament:
     def __init__(self, tournament_infos):
@@ -26,7 +29,10 @@ class Tournament:
         self.round += 1
 
 
-    def serialized(self):
+    def save(self, tournament_db):
+
+        t_db = tournament_db
+        tournament = Query()
         serialized_tournament = {}
         serialized_tournament['id'] = self.id
         serialized_tournament['name'] = self.name
@@ -38,4 +44,17 @@ class Tournament:
         serialized_tournament['description'] = self.description
         serialized_tournament['players_list'] = [player.serialized() for player in self.players_list]
         serialized_tournament['rounds_list'] = [t_round.serialized() for t_round in self.rounds_list]
-        return serialized_tournament
+        
+        if t_db.search(tournament.id == self.id) == []:
+            t_db.insert(serialized_tournament)
+        else :
+            t_db.remove(tournament.id == self.id)
+            t_db.insert(serialized_tournament)
+
+    def deserialized(self):
+        deserialized_round = []
+        for rounds in self.rounds_list:
+            r = Round(rounds[0], self.players_list, rounds[1], rounds[2], rounds[3], rounds[4])
+            r.deserialized()
+            deserialized_round.append(r)
+        self.rounds_list = deserialized_round        
