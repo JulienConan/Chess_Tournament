@@ -3,7 +3,7 @@
 
 from time import strftime
 from operator import attrgetter
-from models.match import Match
+from .match import Match
 
 class Round:
     def __init__(self, round_id, players_list, date_start=strftime("%A %d %B %Y %H:%M:%S"),
@@ -13,7 +13,7 @@ class Round:
         self.players_list = players_list
         self.date_start = date_start
         self.date_end = date_end
-        self.matchs_list = matchs_list
+        self.matchs_list = []
         self.matchs_validates = matchs_validates
 
     def __repr__(self):

@@ -18,7 +18,7 @@ t_query = Query()
 
 def input_menu_vérifcation(index) : 
     """Fonction vérifiant si la saisie d'un menu est valide"""
-    saisie = input("Rentrer le numéro de l'action à effectuer (ou h pour revenir au premier menu) : ")
+    saisie = input("Saisir le numéro souhaité (ou h pour revenir au premier menu) : ")
     try :
         saisie = int(saisie)
         if saisie in range(1,(index + 1)) :
@@ -124,15 +124,33 @@ class TournamentControler:
         self.tournament_infos['date_start'] = strftime("%A %d %B %Y %H:%M:%S")
         self.tournament_infos['date_end'] = "on_course"
         self.tournament_infos['total_round'] = ROUNDS_NB
-        self.tournament_infos['time_controler'] = input("Controleur de temps (blitz, bullet ou coup rapide) : ")
+        print("Choix du controleur de temps :\n",
+                    "           [1] Blitz \n",
+                    "           [2] Bullet \n",
+                    "           [3] Coup Rapide \n")
+        controleur_index = 3
+        menu = input_menu_vérifcation(controleur_index)
+        
+        if menu == 1:
+            self.tournament_infos['time_controler'] = "Blitz"
+        elif menu == 2:
+            self.tournament_infos['time_controler'] = "Bullet"
+        elif menu == 3:
+            self.tournament_infos['time_controler'] = "Coup rapide"
+
         self.tournament_infos['description'] = input("Description : ")
         self.tournament_infos['players_list'] = []
         self.tournament_infos['rounds_list'] = []
 
+        players_on_course = []
         while len(self.tournament_infos['players_list']) < 8:
             self.list_of_players('surname')
             print("{} joueurs ajoutés au tournoi".format(len(self.tournament_infos['players_list'])))
             id_player = input("Saisissez l'id du joueur à ajouter : ")
+            while id_player in players_on_course:
+                print("Le joueur {} est déjà inscrit dans ce tournoi".format(id_player))
+                id_player = input("Saisissez l'id du joueur à ajouter : ")
+            players_on_course.append(id_player)
             self.tournament_infos['players_list'].append(players_db.search(player_db.player_id == id_player)[0])
 
         tournament = Tournament(self.tournament_infos)
@@ -175,10 +193,8 @@ class TournamentControler:
                                  "Lieu : ", tournament.location, "\n",
                                  "Début du tournoi : ", tournament.date_start, "\n"]
 
-        """if tournament.round != 0:
+        if tournament.round != 0:
             while tournament.rounds_list[-1].date_end == 'On course':
-                
-                if tournament.round != 0:
                 self.screen.play()
                 self.screen.add_infos(tournament_infos_list)
                 round_infos = [str(tournament.rounds_list[-1]), "\n"]
@@ -195,12 +211,12 @@ class TournamentControler:
                     score_p1 = int(input("Rentrez le score du joueur 1 : "))
                     score_p2 = int(input("Rentrez le score du joueur 2 : "))
                     tournament.rounds_list[-1].validate_match(match_index, score_p1, score_p2)
-                tournament.save(tournaments_db)"""
+                tournament.save(tournaments_db)
 
 
         while tournament.round < 4:
             tournament.create_round()
-            #tournament.save(tournaments_db)
+            tournament.save(tournaments_db)
 
             while tournament.rounds_list[-1].date_end == 'On course':
                 self.screen.play()
@@ -210,7 +226,6 @@ class TournamentControler:
                     round_infos.append(str(match))
                     round_infos.append("\n")
                 self.screen.add_infos(round_infos)
-                print(tournament.rounds_list[-1], tournament.rounds_list[-1].matchs_list)
                 match_index = int(input("Pour quel match voulez vous rentrer les résultats : "))
                 if match_index > TOURNAMENT_PLAYERS_NB/2 :
                     print("Le numéro du match doit être compris entre 1 et 4 ")
@@ -220,7 +235,7 @@ class TournamentControler:
                     score_p1 = int(input("Rentrez le score du joueur 1 : "))
                     score_p2 = int(input("Rentrez le score du joueur 2 : "))
                     tournament.rounds_list[-1].validate_match(match_index, score_p1, score_p2)
-                #tournament.save(tournaments_db)
+                tournament.save(tournaments_db)
             
         tournament.date_end = strftime("%A %d %B %Y %H:%M:%S")       
         tournament.save(tournaments_db)

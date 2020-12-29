@@ -1,8 +1,8 @@
 # coding: utf-8
 """ Module contenant la classe Tournament"""
 from tinydb import TinyDB, Query
-from models.player import Player
-from models.round import Round
+from .player import Player
+from .round import Round
 
 class Tournament:
     def __init__(self, tournament_infos):
