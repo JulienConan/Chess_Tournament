@@ -13,7 +13,7 @@ class Round:
         self.players_list = players_list
         self.date_start = date_start
         self.date_end = date_end
-        self.matchs_list = []
+        self.matchs_list = matchs_list
         self.matchs_validates = matchs_validates
 
     def __repr__(self):

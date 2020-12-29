@@ -19,6 +19,22 @@ class Screen:
 
 		self.on_screen()
 
+	def on_screen(self):
+		print("".join(self.text))
+
+	def update(self):
+		pass
+
+	def clear(self):
+		os.system('cls' if os.name == 'nt' else 'clear')
+
+	def add_infos(self,infos):
+		self.clear()
+		self.text.append("\n")
+		for info in infos:
+			self.text.append(info)
+		self.on_screen()
+
 	def tournament_main_page(self):
 		self.clear()
 		self.text = ["			TOURNOI		",
@@ -46,12 +62,6 @@ class Screen:
 					"\n\n\n"]
 		self.on_screen()
 
-	def add_infos(self,infos):
-		self.clear()
-		self.text.append("\n")
-		for info in infos:
-			self.text.append(info)
-		self.on_screen()
 
 	def players_list(self, players_list="\n") :
 		self.clear()
@@ -87,14 +97,6 @@ class Screen:
 					 ]
 		self.on_screen()
 
-	def on_screen(self):
-		print("".join(self.text))
-
-	def update(self):
-		pass
-
-	def clear(self):
-		os.system('cls' if os.name == 'nt' else 'clear')
 
 	def reports_main(self):
 		self.clear()
@@ -115,4 +117,16 @@ class Screen:
 					 "[7] Liste de tous les matchs d'un tournoi",
 					 "\n",
 					 ]
+		self.on_screen()
+
+	def matchs_list(self):
+		self.clear()
+		self.text = ["			Liste des matchs 			",
+					 "\n\n\n"]
+		self.on_screen()
+
+	def rounds_list(self):
+		self.clear()
+		self.text = ["			Liste des rounds 			",
+					 "\n\n\n"]
 		self.on_screen()
