@@ -1,8 +1,10 @@
 # coding: utf-8
 """Module contenant la classe Player"""
 
+
 class Player:
     """ Create a Player Object"""
+
     def __init__(self, player_infos):
         self.player_id = player_infos['player_id']
         self.surname = player_infos['surname']
@@ -12,14 +14,12 @@ class Player:
         self.sexe = player_infos['sexe']
         if 'tournament_opponents' not in player_infos:
             self.tournament_opponents = []
-        else :
+        else:
             self.tournament_opponents = player_infos['tournament_opponents']
         if 'tournament_score' not in player_infos:
             self.tournament_score = 0
-        else :
+        else:
             self.tournament_score = player_infos['tournament_score']
-
-
 
     def __repr__(self):
         return self.surname
@@ -28,6 +28,7 @@ class Player:
         return repr(self)
 
     def serialized(self):
+        """Serialized player for tournament export"""
         player_infos = {}
         player_infos['player_id'] = self.player_id
         player_infos['surname'] = self.surname
