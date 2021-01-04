@@ -157,7 +157,11 @@ class PlayerControler:
             key = 'name'
         if modify == 3:
             key = 'elo_ranking'
-            info_modify = int(info_modify)
+            try:
+                info_modify = int(info_modify)
+            except ValueError:
+                info_modify = input_menu_verification(100000000,
+                              "Le classement doit être chiffre positif")
         if modify == 4:
             key = 'birthday'
         if modify == 5:
@@ -290,7 +294,7 @@ class TournamentControler:
                                  tournament.location, "\n",
                                  "Début du tournoi : ",
                                  tournament.date_start, "\n"]
-                                 
+
         while tournament.round < 4:
             if tournament.rounds_list[-1].date_end != 'On course':
                 tournament.create_round()
