@@ -506,7 +506,7 @@ class ReportsControler:
                  "NOMDRE DE TOUR  ",
                  "CONTROLEUR de TEMPS  ",
                  "DESCRIPTION                                                                  ",
-                 "\n"]
+                 "\n\n"]
         for tournament in sorted(tournaments_db.all(),
                                  key=lambda item: item['id']):
             tournament_infos = [info for info in tournament.values()]
@@ -531,7 +531,7 @@ class ReportsControler:
                  "ELO RANKING     ",
                  "DATE DE NAISSANCE  ",
                  "SEXE             ",
-                 "\n"]
+                 "\n\n"]
 
         order = False
         if key == 'elo_ranking':
@@ -562,6 +562,7 @@ class ReportsControler:
         self.tournaments_list()
         tournament_index = input_menu_verification(
             tournaments_db.__len__(), "Saisissez le numéro du tournoi")
+        
         tournaments_players = tournaments_db.search(
             t_query.id == tournament_index)[0]['players_list']
         self.screen.players_list()
@@ -571,7 +572,7 @@ class ReportsControler:
                  "ELO RANKING     ",
                  "DATE DE NAISSANCE  ",
                  "SEXE             ",
-                 "\n"]
+                 "\n\n"]
         for player in sorted(tournaments_players, key=lambda item: item[key], reverse=order):
             player_infos = [info for info in player.values()]
             for i in range(6):
