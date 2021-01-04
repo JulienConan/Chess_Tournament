@@ -23,7 +23,7 @@ p_query = Query()
 t_query = Query()
 
 
-def input_menu_vérifcation(index, message):
+def input_menu_verification(index, message):
     """Verification for user keystroke
 
     Args:
@@ -38,7 +38,7 @@ def input_menu_vérifcation(index, message):
             return saisie
         else:
             print("La saisie doit être comprise entre 1 et {}.".format(index))
-            return input_menu_vérifcation(
+            return input_menu_verification(
                 index, message)
     except ValueError:
         saisie = saisie.lower()
@@ -49,7 +49,7 @@ def input_menu_vérifcation(index, message):
         else:
             print("La saisie doit être un chiffre compris entre 1 et {}."
                   .format(index))
-            return input_menu_vérifcation(index, message)
+            return input_menu_verification(index, message)
 
 
 class MainControler:
@@ -62,7 +62,7 @@ class MainControler:
     def __init__(self):
         self.screen = Screen()
         self.screen.main_page()
-        menu = input_menu_vérifcation(3, "Saisissez le numéro du menu désiré")
+        menu = input_menu_verification(3, "Saisissez le numéro du menu désiré")
 
         if menu == 1:
             self.player_action()
@@ -103,7 +103,7 @@ class PlayerControler:
         """Main menu for player action"""
         self.screen.player_main_page()
         self.count = len(players_db.all())
-        menu = input_menu_vérifcation(
+        menu = input_menu_verification(
             3, "Saisissez le numéro de l'action désirée")
         if menu == 1:
             self.create()
@@ -139,7 +139,7 @@ class PlayerControler:
         """Modify a player info"""
         report = ReportsControler()
         report.list_of_players('player_id')
-        id_player = input_menu_vérifcation(
+        id_player = input_menu_verification(
             players_db.__len__(), "Saisissez le numéro du joueur à modifier")
 
         print("Choix de la modification :\n",
@@ -148,7 +148,7 @@ class PlayerControler:
               "           [3] Classement \n",
               "           [4] Date de naissance \n",
               "           [5] Sexe \n")
-        modify = input_menu_vérifcation(
+        modify = input_menu_verification(
             5, "Saisissez le numéro de la donnée à modifier")
         info_modify = input("Saisissez la modification : ")
         if modify == 1:
@@ -163,14 +163,14 @@ class PlayerControler:
         if modify == 5:
             key = 'sexe'
 
-        players_db.update({key: info_modify}, p_query.player_id == str(id_player))
+        players_db.update({key: info_modify}, p_query.player_id == id_player)
         self.modify()
 
     def delete(self):
         """Delete a player"""
         report = ReportsControler()
         report.list_of_players('player_id')
-        id_player = input_menu_vérifcation(
+        id_player = input_menu_verification(
             players_db.__len__(), "Saisissez le numéro du joueur à effacer")
         players_db.remove(p_query.player_id == id_player)
         self.delete()
@@ -190,7 +190,7 @@ class TournamentControler:
         self.screen = Screen()
         self.count = len(tournaments_db.all())
         self.screen.tournament_main_page()
-        menu = input_menu_vérifcation(3, "Saisissez le menu désiré")
+        menu = input_menu_verification(3, "Saisissez le menu désiré")
 
         if menu == 1:
             self.create()
@@ -215,7 +215,7 @@ class TournamentControler:
               "           [1] Blitz \n",
               "           [2] Bullet \n",
               "           [3] Coup Rapide \n")
-        controler_saisie = input_menu_vérifcation(
+        controler_saisie = input_menu_verification(
             3, "Veuillez saisir le numéro correspondant à votre choix")
 
         if controler_saisie == 1:
@@ -234,11 +234,11 @@ class TournamentControler:
             self.list_of_players()
             print("{} joueurs ajoutés au tournoi".format(
                 len(self.tournament_infos['players_list'])))
-            id_player = input_menu_vérifcation(
+            id_player = input_menu_verification(
                 players_db.__len__(), "Entrez le numéro du joueur à ajouter au tournoi")
             while id_player in players_on_course:
                 print("Le joueur {} est déjà inscrit dans ce tournoi".format(id_player))
-                id_player = input_menu_vérifcation(
+                id_player = input_menu_verification(
                     players_db.__len__(), "Entrez le numéro du joueur à ajouter au tournoi")
             players_on_course.append(id_player)
             self.tournament_infos['players_list'].append(
@@ -272,12 +272,11 @@ class TournamentControler:
             datas.append("\n")
         self.screen.add_infos(datas)
 
-        tournament_id = input(
-            " veuillez saisir le numéro du tournoi à charger")
+        tournament_id = input_menu_verification(tournaments_db.__len__(),
+                        "Saisissez le numéro du tournoi à charger")
         tournament = Tournament(
             tournaments_db.search(t_query.id == tournament_id)[0])
         tournament.deserialized()
-        tournament.save(tournaments_db)
         self.play(tournament)
 
     def play(self, tournament):
@@ -291,32 +290,11 @@ class TournamentControler:
                                  tournament.location, "\n",
                                  "Début du tournoi : ",
                                  tournament.date_start, "\n"]
-
-        if tournament.round != 0:
-            while tournament.rounds_list[-1].date_end == 'On course':
-                self.screen.play()
-                self.screen.add_infos(tournament_infos_list)
-                round_infos = [str(tournament.rounds_list[-1]), "\n"]
-                for match in tournament.rounds_list[-1].matchs_list:
-                    round_infos.append(str(match))
-                    round_infos.append("\n")
-                self.screen.add_infos(round_infos)
-                match_index = input_menu_vérifcation(int(
-                    TOURNAMENT_PLAYERS_NB / 2), "Pour quel match voulez vous rentrer les résultats")
-                if tournament.rounds_list[-1].matchs_list[match_index - 1].statement == "Validé":
-                    print("Match déjà joué.")
-                    time.sleep(1)
-                else:
-                    score_p1 = int(input("Rentrez le score du joueur 1 : "))
-                    score_p2 = int(input("Rentrez le score du joueur 2 : "))
-                    tournament.rounds_list[-1].validate_match(
-                        match_index, score_p1, score_p2)
-                tournament.save(tournaments_db)
-
+                                 
         while tournament.round < 4:
-            tournament.create_round()
-            tournament.save(tournaments_db)
-
+            if tournament.rounds_list[-1].date_end != 'On course':
+                tournament.create_round()
+                tournament.save(tournaments_db)
             while tournament.rounds_list[-1].date_end == 'On course':
                 self.screen.play()
                 self.screen.add_infos(tournament_infos_list)
@@ -325,7 +303,7 @@ class TournamentControler:
                     round_infos.append(str(match))
                     round_infos.append("\n")
                 self.screen.add_infos(round_infos)
-                match_index = input_menu_vérifcation(int(
+                match_index = input_menu_verification(int(
                     TOURNAMENT_PLAYERS_NB / 2), "Pour quel match voulez vous rentrer les résultats")
                 if tournament.rounds_list[-1].matchs_list[match_index - 1].statement == "Validé":
                     print("Match déjà joué.")
@@ -335,17 +313,19 @@ class TournamentControler:
                     score_p2 = int(input("Rentrez le score du joueur 2 : "))
                     tournament.rounds_list[-1].validate_match(
                         match_index, score_p1, score_p2)
+                self.modify_ranking_players(tournament)
                 tournament.save(tournaments_db)
 
-        tournament.date_end = strftime("%A %d %B %Y %H:%M:%S")
-        tournament.save(tournaments_db)
+        if tournament.date_end == 'on_course':
+            tournament.date_end = strftime("%A %d %B %Y %H:%M:%S")
+            tournament.save(tournaments_db)
 
         tournament.players_list = sorted(
             tournament.players_list, key=lambda player: player.elo_ranking)
         tournament.players_list = sorted(
             tournament.players_list, key=lambda player: player.tournament_score, reverse=True)
         self.result(tournament)
-        input_menu_vérifcation(1, "")
+        input_menu_verification(1, "")
 
     def result(self, tournament):
         """Display result for a tournament
@@ -384,13 +364,13 @@ class TournamentControler:
         report.tournaments_list()
         tournament_id = 0
         while tournament_id not in range(1, self.count + 1):
-            tournament_id = input_menu_vérifcation(
+            tournament_id = input_menu_verification(
             tournaments_db.__len__(), "Saisissez le numéro du tournoi à modifier")
-            print("Choix de la modification :\n",
+        print("Choix de la modification :\n",
               "           [1] Nom \n",
               "           [2] Lieu \n",
               "           [3] Description \n")
-        modify = input_menu_vérifcation(
+        modify = input_menu_verification(
             3, "Saisissez le numéro de la donnée à modifier")
         info_modify = input("Saisissez la modification : ")
         if modify == 1:
@@ -403,10 +383,27 @@ class TournamentControler:
         tournaments_db.update({key: info_modify}, t_query.id == tournament_id)
         self.modify()
 
+    def modify_ranking_players(self, tournament):
+        choice = input_menu_verification(2,
+            "Si voulez modifiez le classement d'un joueur saisissez '1' sinon '2'")
+        if choice == 1:
+            self.list_of_players()
+            id_player = input_menu_verification(len(tournament.players_list),
+                "Saisissez l'id du joueur à modifier")
+            new_ranking = input_menu_verification(1000000000,
+                "Saisissez le nouveau classement du joueur")
+            for player in tournament.players_list:
+                if player.player_id ==  id_player:
+                    player.modify_ranking(new_ranking)
+                    players_db.update({'elo_ranking': new_ranking}, p_query.player_id == id_player)
+        else :
+            pass
+        self.play(tournament)
+        
     def list_of_players(self):
         """Display list of players"""
         report = ReportsControler()
-        report.list_of_players('surname')
+        report.list_of_players('player_id')
 
 
 class ReportsControler:
@@ -422,7 +419,7 @@ class ReportsControler:
     def main(self):
         """Main menu for reports"""
         self.screen.reports_main()
-        menu = input_menu_vérifcation(
+        menu = input_menu_verification(
             7, "Saisissez le numéro du rapport souhaité")
         if menu == 1:
             self.list_of_players('surname')
@@ -438,7 +435,7 @@ class ReportsControler:
             self.tournament_rounds_list()
         elif menu == 7:
             self.tournament_matchs_list()
-        input_menu_vérifcation(1, "")
+        input_menu_verification(1, "")
 
     def go_back(self):
         """go back to main menu"""
@@ -513,7 +510,7 @@ class ReportsControler:
         if key == 'elo_ranking':
             order = True
         self.tournaments_list()
-        tournament_index = input_menu_vérifcation(
+        tournament_index = input_menu_verification(
             tournaments_db.__len__(), "Saisissez le numéro du tournoi")
         tournaments_players = tournaments_db.search(
             t_query.id == tournament_index)[0]['players_list']
@@ -540,7 +537,7 @@ class ReportsControler:
     def tournament_rounds_list(self):
         """Display round from a tournament"""
         self.tournaments_list()
-        tournament_index = input_menu_vérifcation(
+        tournament_index = input_menu_verification(
             tournaments_db.__len__(), "Saisissez le numéro du tournoi")
         tournaments_rounds = tournaments_db.search(
             t_query.id == tournament_index)[0]['rounds_list']
@@ -563,7 +560,7 @@ class ReportsControler:
     def tournament_matchs_list(self):
         """Display matchs from a tournament"""
         self.tournaments_list()
-        tournament_index = input_menu_vérifcation(
+        tournament_index = input_menu_verification(
             tournaments_db.__len__(), "Saisissez le numéro du tournoi")
         tournament = Tournament(
             tournaments_db.search(t_query.id == tournament_index)[0])

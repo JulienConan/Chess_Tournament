@@ -27,6 +27,9 @@ class Player:
     def __str__(self):
         return repr(self)
 
+    def modify_ranking(self, new_ranking):
+        self.elo_ranking = new_ranking
+
     def serialized(self):
         """Serialized player for tournament export"""
         player_infos = {}
