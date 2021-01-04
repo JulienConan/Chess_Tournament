@@ -15,9 +15,9 @@ class Match:
 
     def __repr__(self):
         return ("Match " + str(self.match_id) + " : "
-                + str(self.player1) + ", " + str(self.score_player1)
-                + " vs "
-                + str(self.player2) + ", " + str(self.score_player2)
+                + str(self.player1)
+                + " contre "
+                + str(self.player2)
                 + " => Etat : " + str(self.statement))
 
     def __str__(self):

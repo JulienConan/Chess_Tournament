@@ -235,9 +235,11 @@ class TournamentControler:
         self.tournament_infos['players_list'] = []
         self.tournament_infos['rounds_list'] = []
 
+        self.tournament = Tournament(self.tournament_infos)
         players_on_course = []
         while len(self.tournament_infos['players_list']) < 8:
-            self.list_of_players()
+            report = ReportsControler()
+            report.list_of_players('player_id')
             print("{} joueurs ajoutés au tournoi".format(
                 len(self.tournament_infos['players_list'])))
             id_player = input_menu_verification(
@@ -247,10 +249,14 @@ class TournamentControler:
                 id_player = input_menu_verification(
                     players_db.__len__(), "Entrez le numéro du joueur à ajouter au tournoi")
             players_on_course.append(id_player)
-            self.tournament_infos['players_list'].append(
+            try:
+                self.tournament_infos['players_list'].append(
                 players_db.search(p_query.player_id == id_player)[0])
-
+            except IndexError:
+                print("Le joueur {} n'existe pas.".format(id_player))
+                time.sleep(1)
         self.tournament = Tournament(self.tournament_infos)
+
         self.play()
 
     def load(self):
@@ -297,13 +303,13 @@ class TournamentControler:
                                  self.tournament.date_start, "\n"]
 
         while self.tournament.round < 4:
-            if self.tournament.rounds_list[-1].date_end != 'On course':
+            if self.tournament.rounds_list == [] or self.tournament.rounds_list[-1].date_end != 'On course':
                 self.tournament.create_round()
                 self.tournament.save(tournaments_db)
             while self.tournament.rounds_list[-1].date_end == 'On course':
                 self.screen.play()
                 self.screen.add_infos(tournament_infos_list)
-                round_infos = [str(self.tournament.rounds_list[-1]), "\n"]
+                round_infos = [str(self.tournament.rounds_list[-1]), "\n\n"]
                 for match in self.tournament.rounds_list[-1].matchs_list:
                     round_infos.append(str(match))
                     round_infos.append("\n")
@@ -340,10 +346,12 @@ class TournamentControler:
             print("Match déjà joué.")
             time.sleep(1)
             self.update_score()
+        player_1 = str(self.tournament.rounds_list[-1].matchs_list[match_index - 1].player1)
+        player_2 = str(self.tournament.rounds_list[-1].matchs_list[match_index - 1].player2)
         self.screen.add_infos(["Choix du score pour les joueurs :\n",
-                               "    [1] Joueur 1 remporte le match [1,1]\n",
-                               "    [2] Match nul [0.5, 0.5]\n",
-                               "    [3] Joueur 2 remporte  le match [0, 2])\n"])
+                               "    [1] ", player_1, " remporte le match\n",
+                               "    [2] Match nul\n",
+                               "    [3] ", player_2," remporte le match\n"])
         choix_score = input_menu_verification(
             3, "Choisir le score du joueur 1")
         if choix_score == 1:
@@ -362,7 +370,7 @@ class TournamentControler:
 
         self.list_of_players()
         id_player = input_menu_verification(len(self.tournament.players_list),
-                                                "Saisissez l'id du joueur à modifier")
+                                            "Saisissez l'id du joueur à modifier")
         new_ranking = input_menu_verification(1000000000,
                                               "Saisissez le nouveau classement du joueur")
         for player in self.tournament.players_list:
@@ -424,7 +432,7 @@ class TournamentControler:
         self.modify()
 
     def list_of_players(self):
-        """Display list of players"""
+        """Display players list for tournament on course"""
         tournaments_players = tournaments_db.search(
             t_query.id == self.tournament.id)[0]['players_list']
         self.screen.players_list()
@@ -434,7 +442,7 @@ class TournamentControler:
                  "ELO RANKING     ",
                  "DATE DE NAISSANCE  ",
                  "SEXE             ",
-                 "\n"]
+                 "\n\n"]
         for player in sorted(tournaments_players, key=lambda item: item['elo_ranking'], reverse=True):
             player_infos = [info for info in player.values()]
             for i in range(6):

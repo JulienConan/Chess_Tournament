@@ -22,7 +22,7 @@ class Player:
             self.tournament_score = player_infos['tournament_score']
 
     def __repr__(self):
-        return self.surname
+        return self.surname + " " + self.name
 
     def __str__(self):
         return repr(self)
