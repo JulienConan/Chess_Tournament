@@ -45,10 +45,7 @@ class Screen:
                      "[2] Charger un tournoi",
                      "\n",
                      "[3] Modifier un tournoi",
-                     "\n",
-                     "[h] Retourner au menu principale",
-                     "\n"
-                     ]
+                     "\n"]
         self.on_screen()
 
     def tournaments_list(self):
@@ -90,10 +87,7 @@ class Screen:
                      "[2] Modifier un joueur",
                      "\n",
                      "[3] Supprimer un joueur",
-                     "\n",
-                     "[h] Retourner au menu précédent",
-                     "\n"
-                     ]
+                     "\n"]
         self.on_screen()
 
     def reports_main(self):

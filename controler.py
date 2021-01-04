@@ -153,8 +153,10 @@ class PlayerControler:
         info_modify = input("Saisissez la modification : ")
         if modify == 1:
             key = 'surname'
+            info_modify = info_modify.upper()
         if modify == 2:
             key = 'name'
+            info_modify = info_modify.capitalize()
         if modify == 3:
             key = 'elo_ranking'
             try:
@@ -165,6 +167,7 @@ class PlayerControler:
         if modify == 4:
             key = 'birthday'
         if modify == 5:
+            info_modify = info_modify.capitalize()
             key = 'sexe'
 
         players_db.update({key: info_modify}, p_query.player_id == id_player)
