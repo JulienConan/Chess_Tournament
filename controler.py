@@ -111,7 +111,7 @@ class PlayerControler:
         elif menu == 2:
             self.modify()
         elif menu == 3:
-            pass
+            self.delete()
 
     def create(self):
         """Create a player"""
@@ -120,7 +120,7 @@ class PlayerControler:
         self.player_dict['player_id'] = self.count + 1
         self.player_dict['surname'] = input("Nom du Joueur: ").upper()
         self.player_dict['name'] = input("Prénom du Joueur : ").capitalize()
-        self.player_dict['ranking'] = int(-1)
+        self.player_dict['elo_ranking'] = int(-1)
         while self.player_dict['ranking'] < 0:
             try:
                 r = int(input("Classement du joueur: "))
@@ -134,12 +134,12 @@ class PlayerControler:
         self.player_dict['sexe'] = input("Sexe du joueur : ").capitalize()
 
         players_db.insert(self.player_dict)
-        PlayerControler()
+        self.main()
 
     def modify(self):
         """Modify a player info"""
         report = ReportsControler()
-        report.list_of_players('surname')
+        report.list_of_players('player_id')
         id_player = input_menu_vérifcation(
             players_db.__len__(), "Saisissez le numéro du joueur à modifier")
 
@@ -150,8 +150,8 @@ class PlayerControler:
               "           [4] Date de naissance \n",
               "           [5] Sexe \n")
         modify = input_menu_vérifcation(
-            5, " Saisissez le numéro de la donnée à modifier")
-        info_modify = input("Saisissez la modification :")
+            5, "Saisissez le numéro de la donnée à modifier")
+        info_modify = input("Saisissez la modification : ")
         if modify == 1:
             key = 'surname'
         if modify == 2:
@@ -165,6 +165,14 @@ class PlayerControler:
             key = 'sexe'
 
         players_db.update({key: info_modify}, p_query.player_id == str(id_player))
+        self.main()
+
+    def delete(self):
+        """Delete a player"""
+        report = ReportsControler()
+        report.list_of_players('player_id')
+        id_player = input_menu_vérifcation(
+            players_db.__len__(), "Saisissez le numéro du joueur à effacer")
 
 
 class TournamentControler:
@@ -233,7 +241,7 @@ class TournamentControler:
                     players_db.__len__(), "Entrez le numéro du joueur à ajouter au tournoi")
             players_on_course.append(id_player)
             self.tournament_infos['players_list'].append(
-                players_db.search(p_query.player_id == str(id_player))[0])
+                players_db.search(p_query.player_id == id_player)[0])
 
         tournament = Tournament(self.tournament_infos)
         tournament.save(tournaments_db)

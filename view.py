@@ -3,7 +3,6 @@
 
 import os
 
-
 class Screen:
     def __init__(self):
         pass
