@@ -302,7 +302,7 @@ class TournamentControler:
                                  "Début du tournoi : ",
                                  self.tournament.date_start, "\n"]
 
-        while self.tournament.round < 4:
+        while self.tournament.round < ROUNDS_NB:
             if self.tournament.rounds_list == [] or self.tournament.rounds_list[-1].date_end != 'On course':
                 self.tournament.create_round()
                 self.tournament.save(tournaments_db)
@@ -562,7 +562,7 @@ class ReportsControler:
         self.tournaments_list()
         tournament_index = input_menu_verification(
             tournaments_db.__len__(), "Saisissez le numéro du tournoi")
-        
+
         tournaments_players = tournaments_db.search(
             t_query.id == tournament_index)[0]['players_list']
         self.screen.players_list()
