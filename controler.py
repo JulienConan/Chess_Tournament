@@ -9,7 +9,7 @@ Attributes:
 """
 
 from time import strftime, sleep
-from sys import exit
+import sys
 
 from tinydb import TinyDB, Query
 
@@ -69,7 +69,7 @@ def input_menu_verification(index, message):
         if saisie == 'h':
             MainControler()
         elif saisie == 'q':
-            exit()
+            sys.exit()
         else:
             print("La saisie doit être un chiffre compris entre 1 et {}."
                   .format(index))
@@ -93,7 +93,7 @@ class MainControler:
         elif menu == 2:
             self.reports()
         elif menu == 3:
-            self.new_tournament()
+            self.tournament_actions()
 
     def player_action(self):
         """Go to player actions menu"""
@@ -105,7 +105,7 @@ class MainControler:
         report = ReportsControler()
         report.main()
 
-    def new_tournament(self):
+    def tournament_actions(self):
         """Create a new tournament"""
         TournamentControler()
 
@@ -121,6 +121,7 @@ class PlayerControler:
 
     def __init__(self):
         self.screen = Screen()
+        self.player_dict = {}
 
     def main(self):
         """Main menu for player action"""
@@ -137,18 +138,17 @@ class PlayerControler:
     def create(self):
         """Create a player"""
         self.screen.player_main_page()
-        self.player_dict = {}
         self.player_dict['player_id'] = max_player_id() + 1
         self.player_dict['surname'] = input("Nom du Joueur: ").upper()
         self.player_dict['name'] = input("Prénom du Joueur : ").capitalize()
         self.player_dict['elo_ranking'] = int(-1)
         while self.player_dict['elo_ranking'] < 0:
             try:
-                r = int(input("Classement du joueur: "))
-                if r < 0:
+                ranking = int(input("Classement du joueur: "))
+                if ranking < 0:
                     print("le classement doit être supérieur à 0")
                 else:
-                    self.player_dict['elo_ranking'] = r
+                    self.player_dict['elo_ranking'] = ranking
             except ValueError:
                 print("le classement doit être un chiffre supérieur ou égal à 0")
         self.player_dict['birthday'] = input("Date de naissance : ")
