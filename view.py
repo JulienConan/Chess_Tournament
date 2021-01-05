@@ -9,6 +9,7 @@ class Screen:
         pass
 
     def main_page(self):
+        """Display main page"""
         os.system('cls' if os.name == 'nt' else 'clear')
         self.text = ["          GESTIONNAIRE DE TOURNOI                 ",
                      "\n\n\n",
@@ -22,15 +23,15 @@ class Screen:
         self.on_screen()
 
     def on_screen(self):
+        """Print on screen self.text"""
         print("".join(self.text))
 
-    def update(self):
-        pass
-
     def clear(self):
+        """Clear the screen"""
         os.system('cls' if os.name == 'nt' else 'clear')
 
     def add_infos(self, infos):
+        """Add text on self.text"""
         self.clear()
         self.text.append("\n")
         for info in infos:
@@ -38,6 +39,7 @@ class Screen:
         self.on_screen()
 
     def tournament_main_page(self):
+        """Tournament main page"""
         self.clear()
         self.text = ["          TOURNOI     ",
                      "\n\n\n",
@@ -50,36 +52,42 @@ class Screen:
         self.on_screen()
 
     def tournaments_list(self):
+        """Tournaments list page header"""
         self.clear()
         self.text = ["          Liste des tournois          ",
                      "\n\n\n"]
         self.on_screen()
 
     def new_tournament(self):
+        """New tournament page header"""
         self.clear()
         self.text = ["          Nouveau Tournoi          ",
                      "\n\n\n"]
         self.on_screen()
 
     def players_list(self, players_list="\n"):
+        """Players list page header"""
         self.clear()
         self.text = ["              Liste des joueurs       ",
                      "\n\n\n"]
         self.on_screen()
 
     def tournament_result(self, infos):
+        """Tournament result page header"""
         self.clear()
         self.text = ["          RESULTAT DU TOURNOI         ",
                      "\n\n\n"]
         self.add_infos(infos)
 
     def play(self):
+        """Tournament on course page header"""
         self.clear()
         self.text = ["          Tournoi en cours            ",
                      "\n\n\n"]
         self.on_screen()
 
     def player_main_page(self):
+        """Player actions main page"""
         self.clear()
         self.text = ["      Gestion des joueurs",
                      "\n\n\n",
@@ -92,6 +100,7 @@ class Screen:
         self.on_screen()
 
     def reports_main(self):
+        """Reports main page"""
         self.clear()
         self.text = ["          Reports             ",
                      "\n\n\n",
@@ -113,12 +122,14 @@ class Screen:
         self.on_screen()
 
     def matchs_list(self):
+        """Matchs list page header"""
         self.clear()
         self.text = ["          Liste des matchs            ",
                      "\n\n\n"]
         self.on_screen()
 
     def rounds_list(self):
+        """Rounds list page header"""
         self.clear()
         self.text = ["          Liste des rounds            ",
                      "\n\n\n"]

@@ -12,14 +12,15 @@ class Round:
     Attributes:
         date_start (str): date when started round
         date_end (str): date when finished round
-        matchs_list (list): Matchs list for the round
+        matchs_list (list): Round's matchs list
         matchs_validates (int): Number of validated matchs
-        players_list (list): Players list for the round
+        players_list (list): Round's players list
         round_id (int): Round index
     """
 
     def __init__(self, round_id, players_list, date_start=strftime("%A %d %B %Y %H:%M:%S"),
                  date_end="On course", matchs_validates=0, matchs_list=[]):
+        """Round object initialisation"""
         self.round_id = round_id
         self.players_list = players_list
         self.date_start = date_start
@@ -43,7 +44,7 @@ class Round:
         return self
 
     def other_round(self):
-        """create and stock matchs for the second round"""
+        """create and stock matchs for the other round"""
         self.players_list.sort(key=attrgetter("elo_ranking"), reverse=True)
         self.players_list.sort(key=attrgetter(
             "tournament_score"), reverse=True)

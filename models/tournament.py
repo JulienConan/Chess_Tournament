@@ -1,4 +1,5 @@
-""" Module for Tournament Class"""
+"""Module for Tournament Class
+"""
 # coding: utf-8
 from tinydb import Query
 from .player import Player
@@ -6,7 +7,29 @@ from .round import Round
 
 
 class Tournament:
+
+    """Create Tournament object
+
+    Attributes:
+        date_end (str): Date when tournament finished
+        date_start (str): Date when tournament start
+        description (str): Tournament's description
+        id (int): Tournament's id
+        location (str): Location of the tournament
+        name (str): Tournament's name
+        players_list (list): List of tournament's players
+        round (TYPE): Count of created round
+        rounds_list (list): List of tournament's rounds
+        time_controler (str): Tournament's time controler
+        total_round (int): Tournament's round number
+    """
+
     def __init__(self, tournament_infos):
+        """Tournament object initialisation
+
+        Args:
+            tournament_infos (dict): Dictionnary contains tournament informations
+        """
         self.id = tournament_infos['id']
         self.name = tournament_infos['name']
         self.location = tournament_infos['location']
@@ -22,6 +45,8 @@ class Tournament:
         self.round = len(self.rounds_list)
 
     def create_round(self):
+        """Creation of a round
+        """
         r = Round(self.round + 1, self.players_list, matchs_list=[])
         if self.round == 0:
             self.rounds_list.append(r.first_round())
@@ -31,7 +56,11 @@ class Tournament:
         self.round += 1
 
     def save(self, tournament_db):
+        """Save the tournament in database
 
+        Args:
+            tournament_db (TYPE): tournament's tinydb database
+        """
         t_db = tournament_db
         tournament = Query()
         serialized_tournament = {}
@@ -55,6 +84,7 @@ class Tournament:
             t_db.insert(serialized_tournament)
 
     def deserialized(self):
+        """Deserialized Tounrament"""
         deserialized_round = []
         for rounds in self.rounds_list:
             r = Round(rounds[0], self.players_list, rounds[1],
