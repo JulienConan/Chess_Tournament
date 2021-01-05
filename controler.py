@@ -14,11 +14,11 @@ from sys import exit
 from tinydb import TinyDB, Query
 
 from models.constants import (
-                             ROUNDS_NB,
-                             TOURNAMENT_PLAYERS_NB,
-                             P_DATABASE,
-                             T_DATABASE
-                             )
+    ROUNDS_NB,
+    TOURNAMENT_PLAYERS_NB,
+    P_DATABASE,
+    T_DATABASE
+)
 from models.tournament import Tournament
 from view import Screen
 
@@ -115,7 +115,6 @@ class PlayerControler:
     """Player controler
 
     Attributes:
-        count (int): Number of players in database
         player_dict (dict): Dictionnary contains player info
         screen (object): Description
     """
@@ -126,8 +125,8 @@ class PlayerControler:
     def main(self):
         """Main menu for player action"""
         self.screen.player_main_page()
-        self.count = len(players_db.all())
-        menu = input_menu_verification(3, "Saisissez le numéro de l'action désirée")
+        menu = input_menu_verification(
+            3, "Saisissez le numéro de l'action désirée")
         if menu == 1:
             self.create()
         elif menu == 2:
@@ -139,17 +138,17 @@ class PlayerControler:
         """Create a player"""
         self.screen.player_main_page()
         self.player_dict = {}
-        self.player_dict['player_id'] = self.count + 1
+        self.player_dict['player_id'] = max_player_id() + 1
         self.player_dict['surname'] = input("Nom du Joueur: ").upper()
         self.player_dict['name'] = input("Prénom du Joueur : ").capitalize()
         self.player_dict['elo_ranking'] = int(-1)
-        while self.player_dict['ranking'] < 0:
+        while self.player_dict['elo_ranking'] < 0:
             try:
                 r = int(input("Classement du joueur: "))
                 if r < 0:
                     print("le classement doit être supérieur à 0")
                 else:
-                    self.player_dict['ranking'] = r
+                    self.player_dict['elo_ranking'] = r
             except ValueError:
                 print("le classement doit être un chiffre supérieur ou égal à 0")
         self.player_dict['birthday'] = input("Date de naissance : ")
@@ -163,7 +162,13 @@ class PlayerControler:
         report = ReportsControler()
         report.list_of_players('player_id')
         id_player = input_menu_verification(
-            players_db.__len__(), "Saisissez le numéro du joueur à modifier")
+            max_player_id(), "Saisissez le numéro du joueur à modifier")
+        try:
+            players_db.search(p_query.player_id == id_player)[0]
+        except IndexError:
+            print("Le joueur {} n'existe pas.".format(id_player))
+            sleep(1)
+            self.modify()
 
         print("Choix de la modification :\n",
               "           [1] Nom \n",
@@ -442,9 +447,15 @@ class TournamentControler:
         report = ReportsControler()
         report.tournaments_list()
         tournament_id = 0
-        while tournament_id not in range(1, self.count + 1):
+        while tournament_id not in range(1, max_tournament_id() + 1):
             tournament_id = input_menu_verification(
-                tournaments_db.__len__(), "Saisissez le numéro du tournoi à modifier")
+                max_tournament_id(), "Saisissez le numéro du tournoi à modifier")
+        try:
+            tournaments_db.search(t_query.id == tournament_id)[0]
+        except IndexError:
+            print(" Le tournoi {} n'existe pas.".format(tournament_id))
+            sleep(1)
+            self.modify()
         print("Choix de la modification :\n",
               "           [1] Nom \n",
               "           [2] Lieu \n",
