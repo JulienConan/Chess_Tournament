@@ -295,7 +295,7 @@ class TournamentControler:
                  "DATE DE DEBUT                        ",
                  "DATE DE FIN                          ",
                  "NOMDRE DE TOUR  ",
-                 "CONTROLEUR de TEMPS  ",
+                 "CONTROLEUR DE TEMPS  ",
                  "DESCRIPTION                                                             ",
                  "\n"]
         for tournament in tournaments_db.all():
@@ -604,7 +604,13 @@ class ReportsControler:
             order = True
         self.tournaments_list()
         tournament_index = input_menu_verification(
-            tournaments_db.__len__(), "Saisissez le numéro du tournoi")
+            max_tournament_id(), "Saisissez le numéro du tournoi")
+        try:
+            tournaments_db.search(t_query.id == tournament_index)[0]
+        except IndexError:
+            print("Le tournoi {} n'existe pas.".format(tournament_index))
+            sleep(1)
+            self.t_players_list()
 
         tournaments_players = tournaments_db.search(
             t_query.id == tournament_index)[0]['players_list']
@@ -633,9 +639,19 @@ class ReportsControler:
         self.tournaments_list()
         tournament_index = input_menu_verification(
             tournaments_db.__len__(), "Saisissez le numéro du tournoi")
+        tournament = Tournament(
+            tournaments_db.search(t_query.id == tournament_index)[0])
         tournaments_rounds = tournaments_db.search(
             t_query.id == tournament_index)[0]['rounds_list']
         self.screen.rounds_list()
+
+        self.screen.add_infos([tournament.name, "\n",
+                               "Début : ", tournament.date_start, "\n",
+                               "Fin : ", tournament.date_end, "\n",
+                               "Contrôleur de temps : ", tournament.time_controler, "\n",
+                               "Description : ", tournament.description, "\n"]
+                              )
+
         datas = ["Round  ",
                  "Date de début             ",
                  "Date de fin         ",
@@ -661,7 +677,12 @@ class ReportsControler:
         tournament.deserialized()
 
         self.screen.matchs_list()
-        tournament_infos = [tournament.name, "\n"]
+        tournament_infos = [tournament.name, "\n",
+                            "Début : ", tournament.date_start, "\n",
+                            "Fin : ", tournament.date_end, "\n",
+                            "Contrôleur de temps : ", tournament.time_controler, "\n",
+                            "Description : ", tournament.description, "\n"
+                            ]
         self.screen.add_infos(tournament_infos)
         for rounds in tournament.rounds_list:
             print(rounds, "\n")

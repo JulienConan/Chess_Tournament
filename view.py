@@ -54,21 +54,21 @@ class Screen:
     def tournaments_list(self):
         """Tournaments list page header"""
         self.clear()
-        self.text = ["          Liste des tournois          ",
+        self.text = ["          LISTE DES TOURNOIS          ",
                      "\n\n\n"]
         self.on_screen()
 
     def new_tournament(self):
         """New tournament page header"""
         self.clear()
-        self.text = ["          Nouveau Tournoi          ",
+        self.text = ["          NOUVEAU TOURNOI         ",
                      "\n\n\n"]
         self.on_screen()
 
     def players_list(self, players_list="\n"):
         """Players list page header"""
         self.clear()
-        self.text = ["              Liste des joueurs       ",
+        self.text = ["              LISTE DES JOUEURS      ",
                      "\n\n\n"]
         self.on_screen()
 
@@ -82,14 +82,14 @@ class Screen:
     def play(self):
         """Tournament on course page header"""
         self.clear()
-        self.text = ["          Tournoi en cours            ",
+        self.text = ["          TOURNOI EN COURS            ",
                      "\n\n\n"]
         self.on_screen()
 
     def player_main_page(self):
         """Player actions main page"""
         self.clear()
-        self.text = ["      Gestion des joueurs",
+        self.text = ["      GESTION DES JOUEURS",
                      "\n\n\n",
                      "[1] Créer un joueur",
                      "\n",
@@ -102,7 +102,7 @@ class Screen:
     def reports_main(self):
         """Reports main page"""
         self.clear()
-        self.text = ["          Reports             ",
+        self.text = ["          RAPPORTS             ",
                      "\n\n\n",
                      "[1] Liste des joueurs par ordre alphabétique",
                      "\n",
@@ -124,13 +124,13 @@ class Screen:
     def matchs_list(self):
         """Matchs list page header"""
         self.clear()
-        self.text = ["          Liste des matchs            ",
+        self.text = ["          LISTE DES MATCHS            ",
                      "\n\n\n"]
         self.on_screen()
 
     def rounds_list(self):
         """Rounds list page header"""
         self.clear()
-        self.text = ["          Liste des rounds            ",
+        self.text = ["          LISTE DES ROUNDS            ",
                      "\n\n\n"]
         self.on_screen()
