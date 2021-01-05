@@ -52,7 +52,11 @@ class Round:
         match_index = 1
         while len(self.players_list) > 1:
             i = 1
-            while self.players_list[0].player_id in self.players_list[i].tournament_opponents and len(self.players_list) > 2:
+            if self.players_list[0].player_id in self.players_list[i].tournament_opponents:
+                inside = True
+            else:
+                inside = False
+            while inside and len(self.players_list) > 2:
                 i += 1
             self.matchs_list.append(
                 Match(match_index, self.players_list[0], self.players_list[i]))

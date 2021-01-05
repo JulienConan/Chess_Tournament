@@ -31,6 +31,7 @@ def max_player_id():
             i = player['player_id']
     return i
 
+
 def max_tournament_id():
     """Define maximum tournament id"""
     i = 0
@@ -38,6 +39,7 @@ def max_tournament_id():
         if tournament['id'] > i:
             i = tournament['id']
     return i
+
 
 def input_menu_verification(index, message):
     """Verification for user keystroke
@@ -179,7 +181,7 @@ class PlayerControler:
                 info_modify = int(info_modify)
             except ValueError:
                 info_modify = input_menu_verification(
-                            100000000,"Le classement doit être chiffre positif")
+                    100000000, "Le classement doit être chiffre positif")
         if modify == 4:
             key = 'birthday'
         if modify == 5:
@@ -468,7 +470,7 @@ class TournamentControler:
                  "SEXE             ",
                  "\n\n"]
         for player in sorted(
-            tournaments_players, key=lambda item: item['elo_ranking'], reverse=True):
+                tournaments_players, key=lambda item: item['elo_ranking'], reverse=True):
             player_infos = [info for info in player.values()]
             for i in range(6):
                 dif = len(datas[i]) - len(str(player_infos[i]))
