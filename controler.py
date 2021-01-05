@@ -13,12 +13,12 @@ import time
 from sys import exit
 from tinydb import TinyDB, Query
 from view import Screen
-from models.constants import ROUNDS_NB, TOURNAMENT_PLAYERS_NB
+from models.constants import ROUNDS_NB, TOURNAMENT_PLAYERS_NB, P_DATABASE, T_DATABASE
 from models.tournament import Tournament
 
 
-players_db = TinyDB('models/datas_base/players_file.json')
-tournaments_db = TinyDB('models/datas_base/tournament_file.json')
+players_db = TinyDB(P_DATABASE)
+tournaments_db = TinyDB(T_DATABASE)
 p_query = Query()
 t_query = Query()
 
