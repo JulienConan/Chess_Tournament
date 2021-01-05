@@ -1,7 +1,7 @@
 env/
 ajout_liste_joueur.py
-test.py
+.test.py
 models/__pycache__/
 __pycache__/
 setup.cfg
-test.py
+
