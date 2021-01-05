@@ -8,13 +8,19 @@ Attributes:
     tournaments_db (TYPE): Database for tournaments
 """
 
-from time import strftime
-import time
+from time import strftime, sleep
 from sys import exit
+
 from tinydb import TinyDB, Query
-from view import Screen
-from models.constants import ROUNDS_NB, TOURNAMENT_PLAYERS_NB, P_DATABASE, T_DATABASE
+
+from models.constants import (
+                             ROUNDS_NB,
+                             TOURNAMENT_PLAYERS_NB,
+                             P_DATABASE,
+                             T_DATABASE
+                             )
 from models.tournament import Tournament
+from view import Screen
 
 
 players_db = TinyDB(P_DATABASE)
@@ -121,8 +127,7 @@ class PlayerControler:
         """Main menu for player action"""
         self.screen.player_main_page()
         self.count = len(players_db.all())
-        menu = input_menu_verification(
-            3, "Saisissez le numéro de l'action désirée")
+        menu = input_menu_verification(3, "Saisissez le numéro de l'action désirée")
         if menu == 1:
             self.create()
         elif menu == 2:
@@ -270,7 +275,7 @@ class TournamentControler:
                 players_on_course.append(id_player)
             except IndexError:
                 print("Le joueur {} n'existe pas.".format(id_player))
-                time.sleep(1)
+                sleep(1)
         self.tournament = Tournament(self.tournament_infos)
 
         self.play()
@@ -307,7 +312,7 @@ class TournamentControler:
             self.tournament.deserialized()
         except IndexError:
             print("Le tournoi {} n'existe pas.".format(tournament_id))
-            time.sleep(1)
+            sleep(1)
             self.load()
 
         self.play()
@@ -368,7 +373,7 @@ class TournamentControler:
                                               "Pour quel match voulez vous rentrer les résultats")
         if self.tournament.rounds_list[-1].matchs_list[match_index - 1].statement == "Validé":
             print("Match déjà joué.")
-            time.sleep(1)
+            sleep(1)
             self.update_score()
         player_1 = str(
             self.tournament.rounds_list[-1].matchs_list[match_index - 1].player1)
