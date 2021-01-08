@@ -25,7 +25,7 @@
 
 # Installation
 - Python 3.6 minimumu requis  
-- Librairie python Virtualenv : saisir dans un invit de commande : `pip install virtualenv`  
+- Librairie python Virtualenv : saisir dans un invite de commande : `pip install virtualenv`  
 
 ## Téléchargement
 
@@ -37,8 +37,6 @@ Décompresser l'archive __Chess_Tournament-master.zip__.
 
 ### Depuis la Source  
 
-- Python 3.6 minimumu requis  
-
 Dans un invite de commande, saisir :   
 
 `git clone https://github.com/JulienConan/Chess_Tournament.git`
@@ -47,12 +45,12 @@ Dans un invite de commande, saisir :
 
 Dans un invite de commande situé dans le dossier principal de l'application, saisir :  
 
-	### Windows  
-	`python -m venv env`  
-	### Linux
-	`python3 -m venv env`  
-	### MacOs  
-	virtualenv env`
+### Windows  
+`python -m venv env`  
+### Linux
+`python3 -m venv env`  
+### MacOs  
+`virtualenv env`  
 
 ## Activation de l'environnement virtuel  
 
