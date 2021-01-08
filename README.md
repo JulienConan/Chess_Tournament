@@ -56,6 +56,6 @@ Pour lancer l'application, ouvrir un invite de commande dans le dossier principa
 ### Sur Linux :  
 `python3 main.py`  
 ### Sur MacOs :  
-`python[ma_version] main.py` __[ma_version]__ correspondant à la version de python installée sur l'ordinateur de l'utilisateur
+`python[ma_version] main.py`  __[ma_version]__ correspondant à la version de python installée sur l'ordinateur de l'utilisateur  
 
 
