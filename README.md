@@ -60,7 +60,7 @@ Pour lancer l'application, ouvrir un invite de commande dans le dossier principa
 
 ![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/main_menu.png)
 
-Pour chaque action (aller dans un menu ou effectuer une action), l'utilisateur doit saisir le chiffre correspondant et valider la saisie avec la touche __Entrée__. De plus à chaque saisie l'utilisateur pourra quitter le programme ou revenir au menu principale.  
+Pour chaque action (aller dans un menu ou effectuer une action), l'utilisateur doit saisir le chiffre correspondant et valider la saisie avec la touche __Entrée__. A chaque saisie l'utilisateur pourra quitter le programme ou revenir au menu principale.  
 
 ### Gestion de joueurs
 
@@ -68,7 +68,7 @@ Ce menu permet de :
 
 * Créer un nouveau joueur et de le sauvegarder dans la base de données  
 * Modifier un joueur présent dans la base de données  
-* Supprimer un joueur présent dans la base de donnée
+* Supprimer un joueur présent dans la base de données
 
 ![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/players_manager.png)
 
@@ -78,7 +78,12 @@ Ce menu permet de :
 
 * Créer un nouveau tournoi  
 * Charger un tournoi  
-* Modifier les information d'un tournoi
+* Modifier les information d'un tournoi  
+
+![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/Chess_Tournament/tournaments_manager.png)
+
+|:-------------------------:|:-------------------------:|:-------------------------:|
+|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/Chess_Tournament/new_tournament.png"> |<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/Chess_Tournament/add_player.png">|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/Chess_Tournament/match_tournament.png">|
 
 #### Création d'un tournoi  
 
@@ -104,8 +109,13 @@ L'utilisateur est invité à saisir l'__ID__ du tournoi qu'il souhaite charger.
 Si celui-si n'est pas terminé, le tournoi se poursuit, sinon les résultats du tournois sont affichés.  
 
 #### Modifictaion d'un tournoi  
-L'utilisateur est invité à saisir l'__ID__ du tournoi qu'il souhaite modifier.  
-A la suite de cela, il est invité à choisir ce qu'il veut modifier.
 
+L'utilisateur est invité à saisir l'__ID__ du tournoi qu'il souhaite modifier.  
+A la suite de cela, il est peut modifier les informations de ce tournoi.
+
+### Rapports  
+
+L'utilisateur est invité à saisir le chiffre correspondant au rapport qu'il souhaite afficher.
+Pour les rapports concernant les tournois, il sera invité à la suite, à saisir l'__ID__ correspondant au tournoi souhaité.
 
 

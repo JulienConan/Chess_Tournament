@@ -389,7 +389,7 @@ class TournamentControler:
                                "    [2] Match nul\n",
                                "    [3] ", player_2, " remporte le match\n"])
         choix_score = input_menu_verification(
-            3, "Choisir le score du joueur 1")
+            3, "")
         if choix_score == 1:
             score_p1 = 1
             score_p2 = 0
