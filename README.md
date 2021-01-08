@@ -62,16 +62,50 @@ Pour lancer l'application, ouvrir un invite de commande dans le dossier principa
 
 Pour chaque action (aller dans un menu ou effectuer une action), l'utilisateur doit saisir le chiffre correspondant et valider la saisie avec la touche __Entrée__. De plus à chaque saisie l'utilisateur pourra quitter le programme ou revenir au menu principale.  
 
-| | | |
-|:-------------------------:|:-------------------------:|:-------------------------:|
-|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/players_manager.png"> |<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/reports.jpeg">|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/tournaments_manager.jpeg)">|  
-
 ### Gestion de joueurs
 
 Ce menu permet de :  
 
-* Créer un nouveau joueur si celui ci n'est pas déjà présent dans la base de données  
+* Créer un nouveau joueur et de le sauvegarder dans la base de données  
 * Modifier un joueur présent dans la base de données  
 * Supprimer un joueur présent dans la base de donnée
 
 ![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/players_manager.png)
+
+### Gestion des tournois  
+
+Ce menu permet de :  
+
+* Créer un nouveau tournoi  
+* Charger un tournoi  
+* Modifier les information d'un tournoi
+
+#### Création d'un tournoi  
+
+L'utilisateur devra tout d'abord saisir les informations concernant le Tournoi :  
+* Son nom
+* Le lieu où se déroule tournoi  
+* Le type de contrôleur de temps  
+* Sa description  
+
+A la suite de cela, l'utilisateur est invité à ajouter les joueurs qui participent au tournoi. Quand cela est fait le tournoi est automatiquement sauvegardé dans la base de données des tournois et le sera à chaque saisie de l'utilisateur.  
+
+L'application génère ensuite automatiquement les matchs du premier tour du tournoi.  
+L'utilisateur est invité à saisir les résultats de chaque match du tour et quand 
+celui-ci est terminé, l'application génére le tour suivant.
+
+A la fin du dernier tour, l'application affiche les résultats du tournoi.
+
+__A tout moment l'utilisateur peut modifier le classement d'un joueur en choisissant d'effectuer l'action *2*.__  
+
+#### Chargement d'un tournoi  
+
+L'utilisateur est invité à saisir l'__ID__ du tournoi qu'il souhaite charger. 
+Si celui-si n'est pas terminé, le tournoi se poursuit, sinon les résultats du tournois sont affichés.  
+
+#### Modifictaion d'un tournoi  
+L'utilisateur est invité à saisir l'__ID__ du tournoi qu'il souhaite modifier.  
+A la suite de cela, il est invité à choisir ce qu'il veut modifier.
+
+
+
