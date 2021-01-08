@@ -111,7 +111,7 @@ __A tout moment l'utilisateur peut modifier le classement d'un joueur en choisis
 L'utilisateur est invité à saisir l'__ID__ du tournoi qu'il souhaite charger. 
 Si celui-si n'est pas terminé, le tournoi se poursuit, sinon les résultats du tournois sont affichés.  
 
-#### Modifictaion d'un tournoi  
+#### Modification d'un tournoi  
 
 L'utilisateur est invité à saisir l'__ID__ du tournoi qu'il souhaite modifier.  
 A la suite de cela, il est peut modifier les informations de ce tournoi.
@@ -122,4 +122,11 @@ L'utilisateur est invité à saisir le chiffre correspondant au rapport qu'il so
 Pour les rapports concernant les tournois, il sera invité à la suite, à saisir l'__ID__ correspondant au tournoi souhaité.
 
 ![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/reports.png)
+
+# Génération fichier flake8-html
+
+Afin de vérifier que les directives de la PEP8 ont bien été suivi, vous pouvez générer un un fichier flake8_html en saisissant dans un invite de commande ouvert dans le dossier principale de l'application :  
+`flake8 --format=html --htmldir=flake-rapport`
+Cela créera un dossier flake8_rapport dans lequel se trouve le fichier __index.html__ que l'on peut ouvrir afin de vérifier le peluchage du code.
+
 
