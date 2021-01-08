@@ -55,10 +55,10 @@ Dans un invite de commande situé dans le dossier principal de l'application, sa
 ## Activation de l'environnement virtuel  
 
 Dans un invite de commande situé dans le dossier principal de l'application, saisir :
-	### Windows  
-	`env\Scripts\activate.bat`
-	### Linux & MacOs
-	`source env/bin/atcivate`
+### Windows  
+`env\Scripts\activate.bat`
+### Linux & MacOs
+`source env/bin/activate`
 
 ## Installation des dépendances requises
 
