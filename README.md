@@ -66,5 +66,12 @@ Pour chaque action (aller dans un menu ou effectuer une action), l'utilisateur d
 |:-------------------------:|:-------------------------:|:-------------------------:|
 |<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/players_menu.jpeg"> |<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/reports.jpeg">|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/tournaments_menu.jpeg)">|  
 
+### Gestion de joueurs
 
+Ce menu permet de :  
 
+* Créer un nouveau joueur si celui ci n'est pas déjà présent dans la base de données  
+* Modifier un joueur présent dans la base de données  
+* Supprimer un joueur présent dans la base de donnée
+
+![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/players_menu.jpeg)
