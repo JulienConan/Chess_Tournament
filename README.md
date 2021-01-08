@@ -82,8 +82,8 @@ Ce menu permet de :
 
 ![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/tournaments_manager.png)
 
-| Nouveau tournoi | Ajout des joueurs | Saisie score match | Résultats
-|:-------------------------:|:-------------------------:|:-------------------------:|
+| Nouveau tournoi | Ajout des joueurs | Saisie score match | Résultats |
+|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|
 |<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/new_tournament.PNG">|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/add_player.PNG">|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/match_tournament.PNG">|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/results.PNG">|
 
 #### Création d'un tournoi  
