@@ -26,7 +26,15 @@
 
 ## Téléchargement
 
-Depuis ce dépot, télécharger l'archive :  
+### Depuis ce dépot, télécharger l'archive :  
 
 ![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/GitHub_Download.png)
+
+Décompresser l'archive __Chess_Tournament-master.zip.  
+
+### Depuis la Source :
+
+Dans un invite de commande, saisir :   
+
+`git clone https://github.com/JulienConan/Chess_Tournament.git`
 
