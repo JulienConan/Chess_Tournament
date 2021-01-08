@@ -38,3 +38,9 @@ Dans un invite de commande, saisir :
 
 `git clone https://github.com/JulienConan/Chess_Tournament.git`
 
+## Installation des dépendances requises
+
+Se placer dans le dossier principale de l'application et saisir :
+
+`pip install -r requirements.txt`
+
