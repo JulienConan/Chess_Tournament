@@ -24,6 +24,8 @@
 	* Modifier un tournoi
 
 # Installation
+- Python 3.6 minimumu requis  
+- Librairie python Virtualenv : saisir dans un invit de commande : `pip install virtualenv`  
 
 ## Téléchargement
 
@@ -41,13 +43,37 @@ Dans un invite de commande, saisir :
 
 `git clone https://github.com/JulienConan/Chess_Tournament.git`
 
+## Création d'un environnement virtuel
+
+Dans un invite de commande situé dans le dossier principal de l'application, saisir :  
+
+	### Windows  
+	`python -m venv env`  
+	### Linux
+	`python3 -m venv env`  
+	### MacOs  
+	virtualenv env`
+
+## Activation de l'environnement virtuel  
+
+Dans un invite de commande situé dans le dossier principal de l'application, saisir :
+	### Windows  
+	`env\Scripts\activate.bat`
+	### Linux & MacOs
+	`source env/bin/atcivate`
+
 ## Installation des dépendances requises
 
 Se placer dans le dossier principale de l'application et saisir :
 
 `pip install -r requirements.txt`  
 
-## Utilisation  
+## Désactivation environnement virtuel  
+
+Lorsque qu'un environnement virtuel est activé dans un invite de commande, pour le désactiver saisir :  
+`desactivate`  
+
+## Utilisation de l'application  
 
 Pour lancer l'application, ouvrir un invite de commande dans le dossier principale de l'application  et saisir :  
 
@@ -125,7 +151,7 @@ Pour les rapports concernant les tournois, il sera invité à la suite, à saisi
 
 # Génération fichier flake8-html
 
-Afin de vérifier que les directives de la PEP8 ont bien été suivi, vous pouvez générer un un fichier flake8_html en saisissant dans un invite de commande ouvert dans le dossier principale de l'application :  
+Afin de vérifier que les directives de la PEP8 ont bien été suivi, vous pouvez générer un fichier flake8_html en saisissant dans un invite de commande ouvert dans le dossier principale de l'application :  
 `flake8 --format=html --htmldir=flake-rapport`
 Cela créera un dossier flake8_rapport dans lequel se trouve le fichier __index.html__ que l'on peut ouvrir afin de vérifier le peluchage du code.
 
