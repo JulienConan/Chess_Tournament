@@ -51,14 +51,19 @@ Se placer dans le dossier principale de l'application et saisir :
 
 Pour lancer l'application, ouvrir un invite de commande dans le dossier principale de l'application  et saisir :  
 
-### Sur windows :    
+### Sur windows     
 `python main.py`  
-### Sur Linux :  
+### Sur Linux   
 `python3 main.py`  
-### Sur MacOs :  
+### Sur MacOs   
 `python[ma_version] main.py`  __[ma_version]__ correspondant à la version de python installée sur l'ordinateur de l'utilisateur.  
 
 ![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/main_menu.png)
+
+| | | |
+|:-------------------------:|:-------------------------:|:-------------------------:|
+|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/players_menu.jpeg"> |<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/reports.jpeg">|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/tournaments_menu.jpeg)">|
+Pour chaque action (aller dans un menu ou effectuer une action), l'utilisateur doit saisir le chiffre correspondant et valider la saisie avec la touche __Entrée__. De plus à chaque saisie l'utilisateur pourra quitter le programme ou revenir au menu principale.  
 
 
 
