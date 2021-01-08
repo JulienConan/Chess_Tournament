@@ -11,7 +11,7 @@ class Screen:
     def main_page(self):
         """Display main page"""
         os.system('cls' if os.name == 'nt' else 'clear')
-        self.text = ["          GESTIONNAIRE DE TOURNOI                 ",
+        self.text = ["            CHESS TOURNAMENTS MANAGER             ",
                      "\n\n\n",
                      "[1] Gestion des joueurs",
                      "\n",
@@ -41,7 +41,7 @@ class Screen:
     def tournament_main_page(self):
         """Tournament main page"""
         self.clear()
-        self.text = ["          TOURNOI     ",
+        self.text = ["         GESTION DES TOURNOIS     ",
                      "\n\n\n",
                      "[1] Créer un tournoi",
                      "\n",
