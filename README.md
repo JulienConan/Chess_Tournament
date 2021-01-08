@@ -73,18 +73,18 @@ Lorsque qu'un environnement virtuel est activé dans un invite de commande, pour
 
 # Utilisation de l'application  
 
-Activer l'environnement virtuel situé dans le dossier principal de l'application, puis saisir dans l'invit de commande :  
+Activer l'environnement virtuel situé dans le dossier principal de l'application, puis saisir dans l'invite de commande :  
 
-### Sur windows     
+### Windows    
 `python main.py`  
-### Sur Linux   
+### Linux   
 `python3 main.py`  
-### Sur MacOs   
+### MacOs   
 `python[ma_version] main.py`  __[ma_version]__ correspondant à la version de python installée sur l'ordinateur de l'utilisateur.  
 
 ![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/main_menu.png)
 
-Pour chaque action (aller dans un menu ou effectuer une action), l'utilisateur doit saisir le chiffre correspondant et valider la saisie avec la touche __Entrée__. A chaque saisie l'utilisateur pourra quitter le programme ou revenir au menu principale.  
+Pour chaque action (aller dans un menu ou effectuer une action), l'utilisateur doit saisir le chiffre correspondant et valider la saisie avec la touche __Entrée__. A chaque saisie l'utilisateur pourra quitter le programme ou revenir au menu principal.  
 
 ### Gestion de joueurs
 
