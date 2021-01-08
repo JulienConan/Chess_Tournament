@@ -22,3 +22,11 @@
 	* Charger un tournoi
 	* Modifier un tournoi
 
+# Installation
+
+## Téléchargement
+
+Depuis ce dépot, télécharger l'archive :  
+
+![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/GitHub_Download.png)
+
