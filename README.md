@@ -82,6 +82,7 @@ Ce menu permet de :
 
 ![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/Chess_Tournament/tournaments_manager.png)
 
+| | | |
 |:-------------------------:|:-------------------------:|:-------------------------:|
 |<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/Chess_Tournament/new_tournament.png"> |<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/Chess_Tournament/add_player.png">|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/Chess_Tournament/match_tournament.png">|
 
