@@ -73,7 +73,7 @@ Lorsque qu'un environnement virtuel est activé dans un invite de commande, pour
 
 ## Utilisation de l'application  
 
-Pour lancer l'application, ouvrir un invite de commande dans le dossier principale de l'application  et saisir :  
+Activer l'environnement virtuel situé dans le dossier principal de l'application, puis saisir dans l'invit de commande :  
 
 ### Sur windows     
 `python main.py`  
