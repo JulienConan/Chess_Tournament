@@ -80,11 +80,11 @@ Ce menu permet de :
 * Charger un tournoi  
 * Modifier les information d'un tournoi  
 
-![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/Chess_Tournament/tournaments_manager.png)
+![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/tournaments_manager.png)
 
-| Nouveau tournoi | Ajout des joueurs | Saisie score match |
+| Nouveau tournoi | Ajout des joueurs | Saisie score match | Résultats
 |:-------------------------:|:-------------------------:|:-------------------------:|
-|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/new_tournament.PNG"> |<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/add_player.PNG">|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/match_tournament.PNG">|
+|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/new_tournament.PNG">|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/add_player.PNG">|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/match_tournament.PNG">|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/results.PNG">|
 
 #### Création d'un tournoi  
 
@@ -106,6 +106,8 @@ __A tout moment l'utilisateur peut modifier le classement d'un joueur en choisis
 
 #### Chargement d'un tournoi  
 
+![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/tournaments_list.PNG)
+
 L'utilisateur est invité à saisir l'__ID__ du tournoi qu'il souhaite charger. 
 Si celui-si n'est pas terminé, le tournoi se poursuit, sinon les résultats du tournois sont affichés.  
 
@@ -119,4 +121,5 @@ A la suite de cela, il est peut modifier les informations de ce tournoi.
 L'utilisateur est invité à saisir le chiffre correspondant au rapport qu'il souhaite afficher.
 Pour les rapports concernant les tournois, il sera invité à la suite, à saisir l'__ID__ correspondant au tournoi souhaité.
 
+![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/reports.png)
 
