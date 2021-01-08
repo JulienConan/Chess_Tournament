@@ -71,7 +71,7 @@ Se placer dans le dossier principale de l'application et saisir :
 Lorsque qu'un environnement virtuel est activé dans un invite de commande, pour le désactiver saisir :  
 `desactivate`  
 
-## Utilisation de l'application  
+# Utilisation de l'application  
 
 Activer l'environnement virtuel situé dans le dossier principal de l'application, puis saisir dans l'invit de commande :  
 
