@@ -4,7 +4,7 @@
 # Default tournament's number of players
 TOURNAMENT_PLAYERS_NB = 8
 # Default tournament's number of round
-ROUNDS_NB = 6
+ROUNDS_NB = 4
 # Default path's players database
 P_DATABASE = 'datas_base/players_file.json'
 # Default path's tournaments database
