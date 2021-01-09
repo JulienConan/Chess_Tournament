@@ -145,11 +145,21 @@ A la suite de cela, il est peut modifier les informations de ce tournoi.
 L'utilisateur est invité à saisir le chiffre correspondant au rapport qu'il souhaite afficher.
 Pour les rapports concernant les tournois, il sera invité à la suite, à saisir l'__ID__ correspondant au tournoi souhaité.
 
-![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/reports.png)
+![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/reports.png)  
+# Modification des paramètres des tournois  
+
+Au besoin plusieurs paramètres peuvent être changer :  
+* Le nombre de joueurs par tournoi  
+* Le nombre de tour par tournoi  
+* Le chemin d'accès aux base de données (si vous souhaiter créer différentes bases de données)  
+
+Pour cela déplacer vous dans le dossier models situé dans le dossier principale de l'application, et ouvrez avec un éditeur de texte le fichier constants. Vous pourrez alors modifié ces paramètres en les remplacant.  
+
+![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/Constants.PNG)  
 
 # Génération fichier flake8-html
 
-Afin de vérifier que les directives de la PEP8 ont bien été suivi, vous pouvez générer un fichier flake8_html en saisissant dans un invite de commande ouvert dans le dossier principale de l'application :  
+Afin de vérifier que les directives de la PEP8 ont bien été suivi, vous pouvez générer un fichier flake8_html. Activez l'environnement virtuel précédemment crééet saisissez :  
 `flake8 --format=html --htmldir=flake-rapport`
 Cela créera un dossier flake8_rapport dans lequel se trouve le fichier __index.html__ que l'on peut ouvrir afin de vérifier le peluchage du code.
 

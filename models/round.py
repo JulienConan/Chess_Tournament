@@ -59,6 +59,10 @@ class Round:
                 inside = False
             while inside and len(self.players_list) > 2:
                 i += 1
+                if i == len(self.players_list):
+                    i = 1
+                    inside = False
+
             self.matchs_list.append(
                 Match(match_index, self.players_list[0], self.players_list[i]))
             temp_players_list.append(self.players_list[0])
