@@ -155,7 +155,7 @@ Au besoin plusieurs paramètres peuvent être changer :
 
 Pour cela déplacez vous dans le dossier __models__ situé dans le dossier principale de l'application, et ouvrez avec un éditeur de texte le fichier __constants.py__. Vous pourrez alors modifié ces paramètres en les remplacant.  
 
-![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/Constants.PNG)  
+![](https://raw.githubusercontent.com/JulienConan/Chess_Tournament/master/screenshots/const.PNG)  
 
 # Génération fichier flake8-html
 
