@@ -8,6 +8,22 @@ class Screen:
     def __init__(self):
         pass
 
+    def on_screen(self):
+        """Print on screen self.text"""
+        print("".join(self.text))
+
+    def add_infos(self, infos):
+        """Add text on self.text"""
+        self.clear()
+        self.text.append("\n")
+        for info in infos:
+            self.text.append(info)
+        self.on_screen()
+
+    def clear(self):
+        """Clear the screen"""
+        os.system('cls' if os.name == 'nt' else 'clear')
+
     def main_page(self):
         """Display main page"""
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -20,22 +36,6 @@ class Screen:
                      "[3] Gestion des tournois",
                      "\n"]
 
-        self.on_screen()
-
-    def on_screen(self):
-        """Print on screen self.text"""
-        print("".join(self.text))
-
-    def clear(self):
-        """Clear the screen"""
-        os.system('cls' if os.name == 'nt' else 'clear')
-
-    def add_infos(self, infos):
-        """Add text on self.text"""
-        self.clear()
-        self.text.append("\n")
-        for info in infos:
-            self.text.append(info)
         self.on_screen()
 
     def tournament_main_page(self):
