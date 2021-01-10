@@ -38,6 +38,41 @@ class Screen:
 
         self.on_screen()
 
+    def player_main_page(self):
+        """Player actions main page"""
+        self.clear()
+        self.text = ["      GESTION DES JOUEURS",
+                     "\n\n\n",
+                     "[1] Créer un joueur",
+                     "\n",
+                     "[2] Modifier un joueur",
+                     "\n",
+                     "[3] Supprimer un joueur",
+                     "\n"]
+        self.on_screen()
+
+    def reports_main(self):
+        """Reports main page"""
+        self.clear()
+        self.text = ["          RAPPORTS             ",
+                     "\n\n\n",
+                     "[1] Liste des joueurs par ordre alphabétique",
+                     "\n",
+                     "[2] Liste des joueurs par classement",
+                     "\n",
+                     "[3] Liste des joueurs d'un tournoi par ordre alphabétique",
+                     "\n",
+                     "[4] Liste des joueurs d'un tournoi par classement",
+                     "\n",
+                     "[5] Liste de tous les tournois",
+                     "\n",
+                     "[6] Liste de tous les tours d'un tournois",
+                     "\n",
+                     "[7] Liste de tous les matchs d'un tournoi",
+                     "\n",
+                     ]
+        self.on_screen()
+
     def tournament_main_page(self):
         """Tournament main page"""
         self.clear()
@@ -84,41 +119,6 @@ class Screen:
         self.clear()
         self.text = ["          TOURNOI EN COURS            ",
                      "\n\n\n"]
-        self.on_screen()
-
-    def player_main_page(self):
-        """Player actions main page"""
-        self.clear()
-        self.text = ["      GESTION DES JOUEURS",
-                     "\n\n\n",
-                     "[1] Créer un joueur",
-                     "\n",
-                     "[2] Modifier un joueur",
-                     "\n",
-                     "[3] Supprimer un joueur",
-                     "\n"]
-        self.on_screen()
-
-    def reports_main(self):
-        """Reports main page"""
-        self.clear()
-        self.text = ["          RAPPORTS             ",
-                     "\n\n\n",
-                     "[1] Liste des joueurs par ordre alphabétique",
-                     "\n",
-                     "[2] Liste des joueurs par classement",
-                     "\n",
-                     "[3] Liste des joueurs d'un tournoi par ordre alphabétique",
-                     "\n",
-                     "[4] Liste des joueurs d'un tournoi par classement",
-                     "\n",
-                     "[5] Liste de tous les tournois",
-                     "\n",
-                     "[6] Liste de tous les tours d'un tournois",
-                     "\n",
-                     "[7] Liste de tous les matchs d'un tournoi",
-                     "\n",
-                     ]
         self.on_screen()
 
     def matchs_list(self):
