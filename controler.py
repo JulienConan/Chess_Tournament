@@ -431,8 +431,6 @@ class TournamentControler:
                 i = player.player_id
         return i
 
-
-
     def result(self):
         """Display result for a tournament"""
         tournament_result = ["Classement  ",
