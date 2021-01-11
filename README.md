@@ -160,7 +160,7 @@ Pour cela déplacez vous dans le dossier __models__ situé dans le dossier princ
 # Génération fichier flake8-html
 
 Afin de vérifier que les directives de la PEP8 ont bien été suivi, vous pouvez générer un fichier __flake8_html__. Activez l'environnement virtuel précédemment crééet saisissez :  
-`flake8 --format=html --htmldir=flake-rapport`
+`flake8 --format=html --htmldir=flake8-rapport`
 Cela créera un dossier __flake8_rapport__ dans lequel se trouve le fichier __index.html__ que l'on peut ouvrir afin de vérifier le peluchage du code.
 
 
