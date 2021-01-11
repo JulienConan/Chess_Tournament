@@ -26,7 +26,7 @@ class Screen:
 
     def main_page(self):
         """Display main page"""
-        os.system('cls' if os.name == 'nt' else 'clear')
+        self.clear()
         self.text = ["            CHESS TOURNAMENTS MANAGER             ",
                      "\n\n\n",
                      "[1] Gestion des joueurs",
