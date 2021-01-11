@@ -405,8 +405,16 @@ class TournamentControler:
     def modify_player_rank(self):
         """Modify a player's rank"""
         self.list_of_players()
-        id_player = input_menu_verification(len(self.tournament.players_list),
-                                            "Saisissez l'id du joueur à modifier")
+        id_player = input_menu_verification(self.max_player_id(),
+                                            "Saisissez l'id du joueur dont vous souhaitez modifier le rang")
+        id_players_list = []
+        for player in self.tournament.players_list:
+            id_players_list.append(player.player_id)
+
+        if id_player not in id_players_list:
+            print("Le joueur {} n'est pas présent dans le tournoi.".format(id_player))
+            sleep(1)
+            self.modify_player_rank()
         new_ranking = input_menu_verification(1000000000,
                                               "Saisissez le nouveau classement du joueur")
         for player in self.tournament.players_list:
@@ -414,6 +422,16 @@ class TournamentControler:
                 player.modify_ranking(new_ranking)
                 players_db.update(
                     {'elo_ranking': new_ranking}, p_query.player_id == id_player)
+
+    def max_player_id(self):
+        """Define maximum player id"""
+        i = 0
+        for player in self.tournament.players_list:
+            if player.player_id > i:
+                i = player.player_id
+        return i
+
+
 
     def result(self):
         """Display result for a tournament"""
