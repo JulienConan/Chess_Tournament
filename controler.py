@@ -13,7 +13,7 @@ import sys
 
 from tinydb import TinyDB, Query
 
-from models.constants import (
+from constants import (
     ROUNDS_NB,
     TOURNAMENT_PLAYERS_NB,
     P_DATABASE,
