@@ -263,7 +263,7 @@ class TournamentControler:
 
         self.tournament = Tournament(self.tournament_infos)
         players_on_course = []
-        while len(self.tournament_infos['players_list']) < 8:
+        while len(self.tournament_infos['players_list']) < TOURNAMENT_PLAYERS_NB:
             report = ReportsControler()
             report.list_of_players('player_id')
             print("{} joueurs ajoutés au tournoi".format(
