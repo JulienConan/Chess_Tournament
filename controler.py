@@ -599,9 +599,6 @@ class ReportsControler:
         Args:
             key (str): key for players sorting
         """
-        order = False
-        if key == 'elo_ranking':
-            order = True
         self.tournaments_list()
         tournament_index = input_menu_verification(
             max_tournament_id(), "Saisissez le numéro du tournoi")
@@ -622,6 +619,9 @@ class ReportsControler:
                  "DATE DE NAISSANCE  ",
                  "SEXE             ",
                  "\n\n"]
+        order = False
+        if key == 'elo_ranking':
+            order = True
         for player in sorted(tournaments_players, key=lambda item: item[key], reverse=order):
             player_infos = [info for info in player.values()]
             for i in range(6):
