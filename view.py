@@ -72,7 +72,7 @@ class Screen:
                      "\n",
                      "[5] Liste de tous les tournois",
                      "\n",
-                     "[6] Liste de tous les tours d'un tournois",
+                     "[6] Liste de tous les tours d'un tournoi",
                      "\n",
                      "[7] Liste de tous les matchs d'un tournoi",
                      "\n",
