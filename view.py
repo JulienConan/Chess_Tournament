@@ -5,6 +5,7 @@ import os
 
 
 class Screen:
+    """ Class used for display informations on screen"""
     def __init__(self):
         pass
 
@@ -18,6 +19,11 @@ class Screen:
         self.text.append("\n")
         for info in infos:
             self.text.append(info)
+        self.on_screen()
+
+    def info_users(self, info):
+        """Add info for bad user keystroke"""
+        self.text = [data for data in info]
         self.on_screen()
 
     def clear(self):
