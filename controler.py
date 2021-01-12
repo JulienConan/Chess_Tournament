@@ -2,9 +2,7 @@
 # coding: utf-8
 
 Attributes:
-    p_query (TYPE): Query for players database
     players_db (TYPE): Database for players
-    t_query (TYPE): Query for tournaments database
     tournaments_db (TYPE): Database for tournaments
 """
 
@@ -22,7 +20,6 @@ from models.tournament import Tournament
 from models.reports import Reports
 from models.function_db import (
                                 access_db,
-                                query,
                                 max_id,
                                 add_item_db,
                                 search_db,
@@ -35,8 +32,6 @@ from view import Screen
 
 players_db = access_db(P_DATABASE)
 tournaments_db = access_db(T_DATABASE)
-p_query = query()
-t_query = query()
 
 
 def input_menu_verification(index, message):
@@ -190,9 +185,9 @@ class PlayerControler:
         self.screen.on_screen()
         id_player = input_menu_verification(
             max_id(players_db), "Saisissez le numéro du joueur à modifier")
-        try:
-            players_db.search(p_query.player_id == id_player)[0]
-        except IndexError:
+        if search_db(id_player, players_db) is not False:
+            pass
+        else:
             self.screen.warning(
                 "Le joueur {} n'existe pas.".format(id_player))
             sleep(1)
@@ -465,7 +460,8 @@ class TournamentControler:
     def modify_player_rank(self):
         """Modify a player's rank"""
         self.screen.clear()
-        self.screen.info_users(self.list_of_players())
+        report = Reports(players_db, tournaments_db)
+        self.screen.info_users(report.t_players_list(self.tournament.id, 'surname'))
         self.screen.on_screen()
         id_player = input_menu_verification(self.max_player_id_tournament(),
                                             "Saisissez l'id du joueur dont vous souhaitez modifier le rang")
@@ -550,31 +546,6 @@ class TournamentControler:
             key = 'description'
         update_item_in_db(tournaments_db, key, info_modify, tournament_id)
         self.modify()
-
-    def list_of_players(self):
-        """Display players list for tournament on course"""
-        tournaments_players = tournaments_db.search(
-            t_query.id == self.tournament.id)[0]['players_list']
-        self.screen.players_list()
-        datas = ["ID  ",
-                 "NOM             ",
-                 "PRENOM          ",
-                 "ELO RANKING     ",
-                 "DATE DE NAISSANCE  ",
-                 "SEXE             ",
-                 "\n\n"]
-        for player in sorted(
-                tournaments_players, key=lambda item: item['elo_ranking'], reverse=True):
-            player_infos = [info for info in player.values()]
-            for i in range(6):
-                dif = len(datas[i]) - len(str(player_infos[i]))
-                if dif < 0:
-                    datas.append(str(player_infos[i])[:(dif - 1)] + " ")
-                elif dif > 0:
-                    datas.append(str(player_infos[i]) + dif * " ")
-            datas.append("\n")
-
-        return datas
 
 
 class ReportsControler:
