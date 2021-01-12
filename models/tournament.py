@@ -1,13 +1,13 @@
 """Module for Tournament Class
 """
 # coding: utf-8
-from tinydb import Query
 from .player import Player
 from .round import Round
 
+from .function_db import search_db, add_item_db, remove_in_db
+
 
 class Tournament:
-
     """Create Tournament object
 
     Attributes:
@@ -44,6 +44,9 @@ class Tournament:
 
         self.round = len(self.rounds_list)
 
+    def add_player(self, player):
+        self.players_list.append(Player(player))
+
     def create_round(self):
         """Creation of a round
         """
@@ -61,8 +64,6 @@ class Tournament:
         Args:
             tournament_db (TYPE): tournament's tinydb database
         """
-        t_db = tournament_db
-        tournament = Query()
         serialized_tournament = {}
         serialized_tournament['id'] = self.id
         serialized_tournament['name'] = self.name
@@ -77,14 +78,15 @@ class Tournament:
         serialized_tournament['rounds_list'] = [
             t_round.serialized() for t_round in self.rounds_list]
 
-        if t_db.search(tournament.id == self.id) == []:
-            t_db.insert(serialized_tournament)
+        if search_db(self.id, tournament_db) is False:
+            add_item_db(serialized_tournament, tournament_db)
         else:
-            t_db.remove(tournament.id == self.id)
-            t_db.insert(serialized_tournament)
+            remove_in_db(tournament_db, self.id)
+            add_item_db(serialized_tournament, tournament_db)
 
     def deserialized(self):
         """Deserialized Tounrament"""
+
         deserialized_round = []
         for rounds in self.rounds_list:
             r = Round(rounds[0], self.players_list, rounds[1],

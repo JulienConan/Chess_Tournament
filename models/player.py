@@ -6,7 +6,7 @@ class Player:
     """ Create a Player Object"""
 
     def __init__(self, player_infos):
-        self.player_id = player_infos['player_id']
+        self.player_id = player_infos['id']
         self.surname = player_infos['surname']
         self.name = player_infos['name']
         self.elo_ranking = int(player_infos['elo_ranking'])
@@ -33,7 +33,7 @@ class Player:
     def serialized(self):
         """Serialized player for tournament export"""
         player_infos = {}
-        player_infos['player_id'] = self.player_id
+        player_infos['id'] = self.player_id
         player_infos['surname'] = self.surname
         player_infos['name'] = self.name
         player_infos['elo_ranking'] = self.elo_ranking
