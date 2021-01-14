@@ -50,3 +50,18 @@ class Match:
         serialized_match.append((self.player1.player_id, self.score_player1))
         serialized_match.append((self.player2.player_id, self.score_player2))
         return serialized_match
+
+    def result(self):
+        resultat = ""        
+        if self.statement == "Validé":
+        	if self.score_player1 > self.score_player2:
+        		resultat = " : {} bat {}".format(str(self.player1), str(self.player2))
+        	elif self.score_player1 < self.score_player2:
+        		resultat = " : {} bat {}".format(str(self.player2), str(self.player1))
+        	else:
+        		resultat = " : Match Nul"
+        return ( "Match " + str(self.match_id) + " : "
+                + str(self.player1)
+                + " contre "
+                + str(self.player2)
+                + " => Etat : " + str(self.statement) + resultat)

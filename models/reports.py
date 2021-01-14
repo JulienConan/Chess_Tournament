@@ -167,7 +167,7 @@ class Reports:
         for rounds in tournament.rounds_list:
             datas.extend([str(rounds), "\n"])
             for match in rounds.matchs_list:
-                datas.append(str(match))
+                datas.append(match.result())
                 datas.append("\n")
             datas.append("\n\n")
 
