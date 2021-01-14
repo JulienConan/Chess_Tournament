@@ -52,15 +52,17 @@ class Match:
         return serialized_match
 
     def result(self):
-        resultat = ""        
+        resultat = ""
         if self.statement == "Validé":
-        	if self.score_player1 > self.score_player2:
-        		resultat = " : {} bat {}".format(str(self.player1), str(self.player2))
-        	elif self.score_player1 < self.score_player2:
-        		resultat = " : {} bat {}".format(str(self.player2), str(self.player1))
-        	else:
-        		resultat = " : Match Nul"
-        return ( "Match " + str(self.match_id) + " : "
+            if self.score_player1 > self.score_player2:
+                resultat = " : {} bat {}".format(
+                    str(self.player1), str(self.player2))
+            elif self.score_player1 < self.score_player2:
+                resultat = " : {} bat {}".format(
+                    str(self.player2), str(self.player1))
+            else:
+                resultat = " : Match Nul"
+        return ("Match " + str(self.match_id) + " : "
                 + str(self.player1)
                 + " contre "
                 + str(self.player2)
